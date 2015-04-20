@@ -7,11 +7,11 @@
     xmlns:gap = "http://phonegap.com/ns/1.0"
     xmlns:android   = "http://schemas.android.com/apk/res/android"
     >
-    <name>SalesAssist ERP</name>
+    <name>RestoPass</name>
     <preference name="target-device" value="tablet" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="both" />
-    <preference name="Phonegap-version" value="3.6.3" />
+    <preference name="Phonegap-version" value="3.7.0" />
     <preference name="Fullscreen" value="true" />
     <preference name="EnableViewportScale" value="false"/>
 
