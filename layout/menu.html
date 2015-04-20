@@ -1,0 +1,12 @@
+<div class="main_menu"  ng-controller="menu" hm-swipe-right="handleGesture($event)">
+	<div class="omain_menu" hm-tap="handleGesture($event)"></div>
+	<div class="right cmain_menu">
+		<div class="menu clearfix"><span class="left menu_btn" ng-click="snap_back()"></span></div>
+		<ul class="menu_list">
+			<li class="nmenu_list"><span class="left"></span><em>{{name}}</em><em class="emenu_list">{{email}}</em><button ng-click="logout()" lng="Logout"></button></li>
+			<!-- <li class="dmenu_list" ng-click="go('dashboard')" lng="Dashboard"><span></span></li> -->
+			<li class="omenu_list" ng-click="go('orders')" lng="Contracts"><span></span></li>
+			<li class="amenu_list" ng-click="go('add')" lng="Add New Contract"><span></span></li>
+		</ul>
+	</div>
+</div>

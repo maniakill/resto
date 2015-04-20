@@ -1,0 +1,413 @@
+<div ng-include="'layout/menu.html'" ></div>
+<div hm-swipe-right="handleGesture($event)">
+	<div class="menu"><span class="title" lng="Contracts"></span><span class="left snap" ng-click="snap()"></span></div>
+	<div class="loading"><div class="trans"></div><div class="tree"></div><img src="images/loading.gif" id="loading" /></div>
+	<div class="loaded scrolling_stuff add-page">
+		<div class="form" ng-if="step==1">
+			<div ng-if="c_id==0">
+				<input type="radio" ng-model="client.types" ng-change="myVar.types=''" value="0" id="new_0" class="radio"/><label for="new_0" class="align_label" ng-class="myVar.types" >Client encodé</label>
+				<input type="radio" ng-model="client.types" ng-change="myVar.types=''" value="1" id="new_1" class="radio"/><label for="new_1" class="align_label" ng-class="myVar.types" >Nouveau client</label>
+			</div>
+			<div>
+				<div><label for="input_1">Jour de visite:</label><input type="text" id="input_1" ng-model="cStuff.jour_de_visite" /></div>
+				<div><label for="input_2">Commercial:</label><input type="text" id="input_2" ng-model="cStuff.commercial" /></div>
+			</div>
+			<div ng-if="client.types==0">
+				<div ng-if="c_id==0">
+					<input type="text" ng-model="custname" lng="Select Customer" typeahead="authors.ref for authors in getLocation($viewValue,'customers_auto')"  typeahead-on-select="autos($item)" typeahead-min-length="0" typeahead-wait-ms="200" class="autocomplete margin_right" typeahead-loading="loading" typeahead-on-change="cs()" ng-class="myVar.cname">
+					<div ng-show="loading" class="loadingAuto">Loading</div>
+					<input type="text" ng-model="s_customer_id" lng="Select Contact" typeahead="cont.label for cont in getLocation($viewValue,'contacts_auto')"  typeahead-on-select="autosc($item)" typeahead-min-length="0" typeahead-wait-ms="200" class="autocomplete" typeahead-loading="loading1" typeahead-on-change="cs2()">
+					<div ng-show="loading1" class="loadingAuto">Loading</div>
+				</div>
+				<div class="c_details_box">
+					<div class="c_details">
+						<h3 ng-show="cStuff.comp_start">Coordonnées du restaurant</h3>
+						<div class="" ng-show="cStuff.comp_start">
+							<p><span>{{cStuff.customer_name}}</span></p>
+							<p><span ng-bind-html="cStuff.address" ></span></p>
+							<p><span ng-bind-html="cStuff.zip+' '+cStuff.city" ></span></p>
+							<p><span>{{cStuff.tel}}</span></p>
+							<p><span>{{cStuff.mail}}</span></p>
+						</div>
+						<div class="clear"></div>
+						<h3 class="" ng-show="cStuff.c_start">Personne de contact</h3>
+						<div class="" ng-show="cStuff.c_start">
+							<p><span>{{cStuff.first_name}} {{cStuff.last_name}}</span></p>
+							<p><span>{{cStuff.function}}</span></p>
+							<p><span>{{cStuff.email}}</span></p>
+							<p><span>{{cStuff.phone}}</span></p>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div ng-if="client.types==1">
+				<p>Coordonnées du restaurant</p>
+				<div>
+					<div><label for="input_3">Nom:</label><input type="text" id="input_3" ng-model="cStuff.customer_name" ng-class="myVar.cname"/></div>
+					<div><label for="input_4">Adresse:</label><input type="text" id="input_4" ng-model="cStuff.address"/></div>
+					<div><label for="input_16">Zip:</label><input type="text" id="input_16" ng-model="cStuff.zip"/></div>
+					<div><label for="input_17">City:</label><input type="text" id="input_17" ng-model="cStuff.city"/></div>
+					<div><label for="input_5">Tel:</label><input type="text" id="input_5" ng-model="cStuff.tell"/></div>
+					<div><label for="input_6">Mail:</label><input type="text" id="input_6" ng-model="cStuff.mail"/></div>
+				</div>
+				<p>Personne de contact</p>
+				<div>
+					<div><label for="input_7">Nom:</label><input type="text" id="input_7" ng-model="cStuff.contactName"/></div>
+					<div><label for="input_8">Function:</label><input type="text" id="input_8" ng-model="cStuff.function"/></div>
+					<div><label for="input_9">Mail:</label><input type="text" id="input_9" ng-model="cStuff.email"/></div>
+					<div><label for="input_10">GSM:</label><input type="text" id="input_10" ng-model="cStuff.phone"/></div>
+				</div>
+				<p><input type="checkbox" id="input_16" ng-click="copyaddr($event)" value="mama" /> <label for="input_16">Même adresse que le restauran</label></p>
+				<div>
+					<div><label for="input_11">Nom:</label><input type="text" id="input_11" ng-model="cStuff.dcustomer_name"/></div>
+					<div><label for="input_12">Adresse:</label><input type="text" id="input_12" ng-model="cStuff.daddress"/></div>
+					<div><label for="input_18">Zip:</label><input type="text" id="input_18" ng-model="cStuff.dcity"/></div>
+					<div><label for="input_19">City:</label><input type="text" id="input_19" ng-model="cStuff.dcity"/></div>
+					<div><label for="input_13">Tel:</label><input type="text" id="input_13" ng-model="cStuff.dtell"/></div>
+					<div><label for="input_14">Mail:</label><input type="text" id="input_14" ng-model="cStuff.dmail"/></div>
+					<div><label for="input_15">Numéro d’entreprise:</label><input type="text" id="input_15" ng-model="cStuff.dnumero"/></div>
+				</div>
+			</div>
+			<div class="clearfix margin-top">
+				<button class="croped right" ng-click="go_to(2)" lng="Page suivante"></button>
+			</div>
+		</div>
+		<div class="form" ng-if="step==2">
+			<div>
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="input_1">Site internet:</label><input type="text" ng-model="cStuff.website" id="input_1" /></div>
+			</div>
+			<p>Réseaux sociaux</p>
+			<div>
+				<div><input type="checkbox" id="input_3" ng-model="cStuff.socials.fb" /><label class="align_label" for="input_3">Facebook</label><input ng-model="cStuff.soc.fb" type="text" id="input_9" /></div>
+				<div><input type="checkbox" id="input_4" ng-model="cStuff.socials.go" /><label class="align_label" for="input_4">Google+</label><input ng-model="cStuff.soc.go" type="text" id="input_10" /></div>
+				<div><input type="checkbox" id="input_5" ng-model="cStuff.socials.pi" /><label class="align_label" for="input_5">Pinterest</label><input ng-model="cStuff.soc.pi" type="text" id="input_11" /></div>
+				<div><input type="checkbox" id="input_6" ng-model="cStuff.socials.li" /><label class="align_label" for="input_6">Linkedin</label><input ng-model="cStuff.soc.li" type="text" id="input_12" /></div>
+				<div><input type="checkbox" id="input_7" ng-model="cStuff.socials.in" /><label class="align_label" for="input_7">Instagram</label><input ng-model="cStuff.soc.in" type="text" id="input_13" /></div>
+				<div><input type="checkbox" id="input_8" ng-model="cStuff.socials.au" /><label class="align_label" for="input_8">Autre</label><input ng-model="cStuff.soc.au" type="text" id="input_14" /></div>
+			</div>
+			<div class="clearfix margin-top">
+				<button class="croped left" ng-click="go_to(1)" lng="Page suivante"></button>
+				<button class="croped right" ng-click="go_to(3)" lng="Page suivante"></button>
+			</div>
+		</div>
+		<div class="form" ng-if="step==3">
+			<p>REDUCTIONS ACCORDEES PAR LE RESTAURATEUR</p>
+			<div>
+				<div><input type="checkbox" id="input_1" ng-model="cStuff.reduction.1" /><label class="align_label break_l" for="input_1">Réduction de « Découverte » qui consiste en une réduction de 30% sur le montant total de l’addition
+             (par table et hors boissons) lors de la première visite avec un plafond de 50€ de réduction par table.</label></div>
+				<div><input type="checkbox" id="input_2" ng-model="cStuff.reduction.2" /><label class="align_label break_l" for="input_2">Réduction permanente de « Fidélisation » qui consiste en une réduction de, avec un maximum de 50€ de réduction par table</label></div>
+				<div class="indented"><input type="checkbox" id="input_3" ng-model="cStuff.reduction.3" /><label class="align_label break_l" for="input_3">15% sur le montant total de l’addition (par table et hors boissons).</label></div>
+				<div class="indented"><input type="checkbox" id="input_4" ng-model="cStuff.reduction.4" /><label class="align_label break_l" for="input_4">10% sur le montant total de l’addition (par table et hors boissons).</label></div>
+				<div><input type="checkbox" id="input_5" ng-model="cStuff.reduction.5" /><label class="align_label break_l" for="input_5">Offre « Premium » qui consiste à offrir un repas pour tout repas acheté (Cette réduction est calculée par table avec un minimum de deux couverts. Le plat offert est le moins cher).</label></div>
+			</div>
+			<p>Cartes de valeur RestoPass</p>
+			<div>
+				<div><input type="radio" id="input_6" name="yes" class="radio" ng-model="cStuff.cartesDeValuer" value="1" /><label class="align_label" for="input_6">Oui</label></div>
+				<div><input type="radio" id="input_7" name="yes" class="radio" ng-model="cStuff.cartesDeValuer" value="0" /><label class="align_label" for="input_7">Non</label></div>
+				<div><label for="input_8">Numéro de compte bancaire</label><input type="text" id="input_8" ng-model="cStuff.contBanc"></div>
+				<div><label for="input_9">Remarques</label>
+					<textarea id="input_9" rows="6" ng-model="cStuff.remarq"></textarea> </div>
+			</div>
+			<div class="clearfix margin-top">
+				<button class="croped left" ng-click="go_to(2)" lng="Page suivante"></button>
+				<button class="croped right" ng-click="go_to(4)" lng="Page suivante"></button>
+			</div>
+		</div>
+		<div class="form" ng-if="step==4">
+			<p>Informations générales du restaurant</p>
+			<p>Voir si menu déroulant pour horaires</p>
+			<!-- <p>Prévoir pour horaires du midi (12h-14h30 par exemple)
+Et horaires du soir
+Jours de fermeture
+</p> -->
+			<table class="days" cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr>
+						<td class="th">Lundi</td>
+						<td>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.luni.from"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.luni.to"/>
+							</div>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.luni.from2"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.luni.to2"/>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="th">Mardi</td>
+						<td>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.marti.from"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.marti.to"/>
+							</div>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.marti.from2"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.marti.to2"/>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="th">Mercredi</td>
+						<td>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.miercuri.from"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.miercuri.to"/>
+							</div>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.miercuri.from2"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.miercuri.to2"/>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="th">Jeudi</td>
+						<td>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.joi.from"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.joi.to"/>
+							</div>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.joi.from2"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.joi.to2"/>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="th">Vendredi</td>
+						<td>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.vineri.from"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.vineri.to"/>
+							</div>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.vineri.from2"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.vineri.to2"/>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="th">Samedi</td>
+						<td>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.sambata.from"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.sambata.to"/>
+							</div>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.sambata.from2"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.sambata.to2"/>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="last th">Dimanche</td>
+						<td class="last">
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.duminica.from"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.duminica.to"/>
+							</div>
+							<div>
+								<label>De:</label>
+								<input ng-model="cStuff.orar.duminica.from2"/>
+								<label>À:</label>
+								<input ng-model="cStuff.orar.duminica.to2"/>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="clearfix margin-top">
+				<button class="croped left" ng-click="go_to(3)" lng="Page suivante"></button>
+				<button class="croped right" ng-click="go_to(5)" lng="Page suivante"></button>
+			</div>
+		</div>
+		<div class="form" ng-if="step==5">
+			<div><label for="input_1">QUARTIER</label><input ng-model="cStuff.quartier" type="text" id="input_1"></div>
+			<div><label for="input_2">DISTANTION, LABELS</label><input ng-model="cStuff.distantion" type="text" id="input_2"></div>
+			<p id="filters">FILTERS</p>
+			<div class="filter_wrap">
+				<div class="clearfix">
+					<div class="filters left">
+						<h3>Ambiance</h3>
+						<div><input type="checkbox" id="input_3" ng-model="cStuff.ambiance.exotiq" /><label class="align_label" for="input_3">Exotique</label></div>
+						<div><input type="checkbox" id="input_4" ng-model="cStuff.ambiance.tendance" /><label class="align_label" for="input_4">Tendance</label></div>
+						<div><input type="checkbox" id="input_5" ng-model="cStuff.ambiance.entreamis" /><label class="align_label" for="input_5">Entre amis</label></div>
+						<div><input type="checkbox" id="input_6" ng-model="cStuff.ambiance.cosy" /><label class="align_label" for="input_6">Cosy</label></div>
+						<div><input type="checkbox" id="input_7" ng-model="cStuff.ambiance.gastronimie" /><label class="align_label" for="input_7">Gastronomie</label></div>
+						<div class="min_h44"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+						<div class="min_h44"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+						<div class="min_h44"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+						<div><label for="input_8">Autre</label><input ng-model="cStuff.ambiance.autre" type="text" id="input_8"></div>
+					</div>
+					<div class="filters left">
+						<h3>Paiements</h3>
+						<div><input type="checkbox" id="input_9" ng-model="cStuff.paiements.visa" /><label class="align_label" for="input_9">Visa</label></div>
+						<div><input type="checkbox" id="input_10" ng-model="cStuff.paiements.mastercard" /><label class="align_label" for="input_10">Mastercard</label></div>
+						<div><input type="checkbox" id="input_11" ng-model="cStuff.paiements.american" /><label class="align_label" for="input_11">American Express</label></div>
+						<div><input type="checkbox" id="input_12" ng-model="cStuff.paiements.bancontact" /><label class="align_label" for="input_12">Bancontact</label></div>
+						<div><input type="checkbox" id="input_13" ng-model="cStuff.paiements.ticket" /><label class="align_label" for="input_13">Ticket restaurant</label></div>
+						<div><input type="checkbox" id="input_14" ng-model="cStuff.paiements.dinners" /><label class="align_label" for="input_14">Diners Club</label></div>
+						<div class="min_h44"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+						<div class="min_h44"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+						<div><label for="input_15">Autre</label><input ng-model="cStuff.paiements.autre" type="text" id="input_15"></div>
+					</div>
+					<div class="filters left">
+						<h3>Services</h3>
+						<div><input type="checkbox" id="input_16" ng-model="cStuff.services.parking" /><label class="align_label" for="input_16">Parking</label></div>
+						<div><input type="checkbox" id="input_17" ng-model="cStuff.services.handi" /><label class="align_label" for="input_17">Accès handicapès</label></div>
+						<div><input type="checkbox" id="input_18" ng-model="cStuff.services.wifi" /><label class="align_label" for="input_18">Wi-fi</label></div>
+						<div><input type="checkbox" id="input_19" ng-model="cStuff.services.terase" /><label class="align_label" for="input_19">Terase/jardin</label></div>
+						<div><input type="checkbox" id="input_20" ng-model="cStuff.services.furnoir" /><label class="align_label" for="input_20">Furnoir</label></div>
+						<div><input type="checkbox" id="input_21" ng-model="cStuff.services.lounge" /><label class="align_label" for="input_21">Escape Lounge</label></div>
+						<div><input type="checkbox" id="input_22" ng-model="cStuff.services.voiturier" /><label class="align_label" for="input_22">Voiturier</label></div>
+						<div class="min_h44"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+						<div><label for="input_23">Autre</label><input type="text" id="input_23"ng-model="cStuff.services.autre" /></div>
+					</div>
+					<div class="filters left">
+						<h3>Prix</h3>
+						<div><input type="checkbox" id="input_24" ng-model="cStuff.prix.20"/><label class="align_label" for="input_24">20-30&euro;</label></div>
+						<div><input type="checkbox" id="input_25" ng-model="cStuff.prix.30"/><label class="align_label" for="input_25">30-40&euro;</label></div>
+						<div><input type="checkbox" id="input_26" ng-model="cStuff.prix.40"/><label class="align_label" for="input_26">40-50&euro;</label></div>
+						<div><input type="checkbox" id="input_27" ng-model="cStuff.prix.50"/><label class="align_label" for="input_27">50-65&euro;</label></div>
+						<div><input type="checkbox" id="input_28" ng-model="cStuff.prix.65"/><label class="align_label" for="input_28">+65&euro;</label></div>
+						<div class="min_h44"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+						<div class="min_h44"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+						<div class="min_h44"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+						<div class="min_h44"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+						<div class="min_h48"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+					</div>
+					<div class="filters left">
+						<h3>Cuisine</h3>
+						<div><input type="checkbox" id="input_29" ng-model="cStuff.cuisine.asiatic" /><label class="align_label" for="input_29">Asiatique</label></div>
+						<div><input type="checkbox" id="input_30" ng-model="cStuff.cuisine.espagnole" /><label class="align_label" for="input_30">Espagnole</label></div>
+						<div><input type="checkbox" id="input_31" ng-model="cStuff.cuisine.belge" /><label class="align_label" for="input_31">Belge</label></div>
+						<div><input type="checkbox" id="input_32" ng-model="cStuff.cuisine.francais" /><label class="align_label" for="input_32">Française</label></div>
+						<div><input type="checkbox" id="input_33" ng-model="cStuff.cuisine.italiene" /><label class="align_label" for="input_33">Italienne</label></div>
+						<div><input type="checkbox" id="input_34" ng-model="cStuff.cuisine.thai" /><label class="align_label" for="input_34">Thailandaise</label></div>
+						<div class="min_h44"><input type="checkbox" class="hidden" /><label>&nbsp;</label></div><div><input type="checkbox" class="hidden" /><label>&nbsp;</label></div>
+						<div><label for="input_35">Autre</label><input type="text" id="input_35"ng-model="cStuff.cuisine.autre" /></div>
+					</div>
+				</div>
+				<div class="inline">
+					<h3>Best For</h3>
+					<div><input type="checkbox" id="input_36" ng-model="cStuff.bestfor.amis"/><label class="align_label" for="input_36">Entre amis</label></div>
+					<div><input type="checkbox" id="input_37" ng-model="cStuff.bestfor.amoureux"/><label class="align_label" for="input_37">En amoureux</label></div>
+					<div><input type="checkbox" id="input_38" ng-model="cStuff.bestfor.group"/><label class="align_label" for="input_38">Spcèial group</label></div>
+					<div><input type="checkbox" id="input_39" ng-model="cStuff.bestfor.affaires"/><label class="align_label" for="input_39">Affaires</label></div>
+					<div><input type="checkbox" id="input_40" ng-model="cStuff.bestfor.occasion"/><label class="align_label" for="input_40">Occasions particulières</label></div><br/>
+					<div><label for="input_41">Autre</label><input type="text" id="input_41"ng-model="cStuff.bestfor.autre"></div>
+				</div>
+				<div class="inline">
+					<h3>Best of</h3>
+					<div><input type="checkbox" id="input_42" ng-model="cStuff.bestof.prix"/><label class="align_label" for="input_42">Rapport qualitè - prix</label></div>
+					<div><input type="checkbox" id="input_43" ng-model="cStuff.bestof.terasse"/><label class="align_label" for="input_43">Terasse</label></div>
+					<div><input type="checkbox" id="input_44" ng-model="cStuff.bestof.parking"/><label class="align_label" for="input_44">Parking</label></div>
+					<div><input type="checkbox" id="input_45" ng-model="cStuff.bestof.brunch"/><label class="align_label" for="input_45">Brunch</label></div><br/>
+					<div><label for="input_46">Autre</label><input type="text" id="input_46" ng-model="cStuff.bestof.autre" /></div>
+				</div>
+			</div>
+			<div class="clearfix margin-top">
+				<button class="croped left" ng-click="go_to(4)" lng="Page suivante"></button>
+				<button class="croped right" ng-click="go_to(6)" lng="Page suivante"></button>
+			</div>
+		</div>
+		<div class="form" ng-if="step==6">
+			<p>Description de votre restaurant </p>
+			<div>
+				<div><label for="input_1">Texte FR</label>
+					<textarea id="input_1" rows="6" ng-model="cStuff.descriptionfr"></textarea> </div>
+				<div><label for="input_2">Texte NL</label>
+					<textarea id="input_2" rows="6" ng-model="cStuff.descriptionnl"></textarea> </div>
+				<div><label for="input_3">Texte ANG</label>
+					<textarea id="input_3" rows="6" ng-model="cStuff.descriptionen"></textarea> </div>
+				<div><input type="radio" class="radio" name="infos" value="0" id="input_4" ng-model="cStuff.infos"/><label class="align_label" for="input_4">Informations reçues ce jour</label></div>
+				<div><input type="radio" class="radio" name="infos" value="1" id="input_5" ng-model="cStuff.infos"/><label class="align_label" for="input_5">Informations seront communiquées ultérieurement, date</label></div>
+			</div>
+			<div class="clearfix margin-top">
+				<button class="croped left" ng-click="go_to(5)" lng="Page suivante"></button>
+				<button class="croped right" ng-click="go_to(7)" lng="Page suivante"></button>
+			</div>
+		</div>
+		<div class="form" ng-if="step==7">
+			<p>Galerie photos</p>
+			<div>
+				<div><input type="radio" class="radio" ng-model="photos.types" value="0" name="photo" id="input_1" ng-model="cStuff.photoType" /><label class="align_label" for="input_1">Photos seront communiquées ultérieurement, date</label></div>
+				<div><input type="radio" class="radio" ng-model="photos.types" value="1" name="photo" id="input_2" ng-model="cStuff.photoType" /><label class="align_label" for="input_2">Prise de photos ce jour</label></div>
+			</div>
+			<div ng-if="photos.types==1" class="clearfix margin-top">
+				<button class="croped left" ng-click="add_photos()" lng="Ajoutez de photos"></button>
+			</div>
+			<div class="images" ng-if="photos.types==1">
+				<ul id="list-img" class="clearfix">
+					<li ng-repeat="img in image">
+						<img src="{{img.img}}" ng-click="delete_img($index)" />
+					</li>
+				</ul>
+			</div>
+			<div class="clearfix margin-top">
+				<button class="croped left" ng-click="go_to(6)" lng="Page suivante"></button>
+				<button class="croped right" ng-click="go_to(8)" lng="Page suivante"></button>
+			</div>
+		</div>
+		<div class="form" ng-if="step==8">
+			<div>
+				<div><a class="links" href="" ng-click="conditions=!conditions">Prévisualisation des conditions générales </a></div>
+				<div ng-if="conditions" class="conditions">
+					<h2>CONDITIONS GENERALES</h2>
+					<p>La présente convention comprend les conditions particulières conclues entre RestoPass® et le Restaurateur et est indissociable des conditions générales de RestoPass® qui font intégralement partie du présent contrat sauf dans la mesure où il y est dérogé expréssement.</p>
+					<p>Le Restaurateur déclare avoir pris connaissance des conditions générales de RestoPass® qui sont, par ailleurs, disponibles à l’adresse internet suivante : www.restopass.com/conditionsgenerales</p>
+					<p>Le Restaurateur déclare accepter sans réserve les conditions générales de RestoPass® et accepte, le cas échéant, expressément d’écarter ses propres conditions générales.</p>
+				</div>
+				<div><a class="links" href="" ng-click="openInBrowserP()">Prévisualisation du contrat en PDF </a></div>
+				<div><a class="links" href="" ng-click="sendEmail.show=!sendEmail.show">Envoi par mail  </a></div>
+				<div class="send_by_email" ng-if="sendEmail.show">
+					<div><label>To:</label><input type="text" ng-model="sendEmail.email"></div>
+					<div><label>Subject:</label><input type="text" ng-model="sendEmail.subject"></div>
+					<label>Body:</label><textarea ng-model="sendEmail.emailBody" class="textareaE" rows="8"></textarea>
+					<div class="clearfix sendEmailBtns">
+						<button class="croped" ng-click="closeEmail()" lng="Close"></button>
+						<button class="croped" ng-click="SendEmail()" lng="Send"></button>
+					</div>
+				</div>
+				<div class="signature">
+					<div style="width:730px; height:410px;">
+						<canvas id="signature" height="404" width="724" ></canvas>
+					</div>
+					<button class="croped" ng-click="clear()" lng="Clear"></button>
+				</div>
+			</div>
+			<div class="clearfix margin-top">
+				<button class="croped left" ng-click="go_to(7)" lng="Page suivante"></button>
+				<button class="croped right" ng-click="save()" lng="Sauvegarder"></button>
+			</div>
+		</div>
+	</div>
+</div>

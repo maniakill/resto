@@ -1,0 +1,13 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+<div class="loading"><div class="trans"></div><div class="tree"></div><img src="images/loading.gif" id="loading" /></div>
+<div class="loaded scrolling_stuff">
+	<div class="loginForm center">
+		<img src="images/logo.png" alt="SalesAssist" width="275" height="78">
+		<form>
+			<input type="text" name="username" value="" maxlenght="50" class="username" placeholder="Username" ng-model="username" autocomplete="OFF" autocapitalize="off" autocorrect="off" />
+			<input type="password" name="password" value="" maxlenght="50" class="password" placeholder="Password" ng-model="password" autocomplete="OFF" autocapitalize="off" autocorrect="off" />
+			<input type="submit" class="submit" value="Log In" ng-click="fetch()" value="Log In">
+		</form>
+		<div class="external_link"><a id="forgot" ng-click="openInBrowser()" >Can't access your account?</a></div>
+	</div>
+</div>

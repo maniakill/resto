@@ -1,0 +1,56 @@
+<div ng-include="'layout/menu.html'" ></div>
+<datepicker ng-model="dt" class="well well-sm dropdown-menu" datepicker-options="dateOptions" ng-show="openeds"></datepicker>
+<div hm-swipe-right="handleGesture($event)">
+	<div class="menu"><span class="title" lng="Contracts"></span><span class="left snap" ng-click="snap()"></span></div>
+	<div class="filter" ng-show="search">
+		<form ng-submit="submit()">
+		<input type="text" name="search" class="search" autocapitalize="off" autocorrect="off" ng-model="serch" lng="Search">
+		<input type="text" name="search" class="date" id="sdate" autocapitalize="off" autocorrect="off" ng-model="sdate" ng-click="open($event,'sdate')" readonly="readonly" lng="Start Date">
+		 <input type="text" name="search" class="date last_date" id="edate" lng="End Date" autocapitalize="off" autocorrect="off" ng-model="edate" ng-click="open($event,'edate')" readonly="readonly"><br>
+		<input type="text" name="search" class="date" id="dsdate" lng="Delivery Start Date" autocapitalize="off" autocorrect="off" ng-model="ddate" ng-click="open($event,'ddate')" readonly="readonly">
+		<input type="text" name="search" class="date" id="dedate" lng="Delivery End Date" autocapitalize="off" autocorrect="off" ng-model="dedate"	ng-click="open($event,'dedate')" readonly="readonly">
+		<input type="submit" value="Search" id="hit_it" class="last_date" lng="Search" >
+	</form>
+	</div>
+	<div class="views">
+		<ul>
+			<li ng-repeat="view in views" class="{{view.view}} {{view.active}}" ng-click="fil(view.p)" lng="{{view.name}}"><span class="dot"></span></li><li class="search right" ng-click="showSearch()"></li>
+		</ul>
+	</div>
+	<div class="loading"><div class="trans"></div><div class="tree"></div><img src="images/loading.gif" id="loading" /></div>
+	<div class="loaded scrolling_stuff">
+	<ul class="pagination" ng-show="is_pagination">
+		<li ng-click="page(backlink)" lng="Previous"></li>
+		<li ng-repeat="pag in pagg" ng-click="page(pag.pag - 1)" class="{{pag.active}}">{{pag.pag}}</li>
+		<li ng-click="page(nextlink)" lng="Next"></li>
+	</ul>
+	<table class="list" width="100%" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr class="listItem" ng-repeat="order in orders">
+				<td width="6%" class="{{order.status}}"><span class="dot"></span></td>
+				<td width="19%">
+					<p>{{order.serial_number}}</p>
+					<div class="pd1"><label lng="Commercial" befor="true">:</label> <strong>{{order.created}}</strong></div>
+					<div ng-show="order.our_ref"><label lng="Jour de visite" befor="true">:</label> <strong>{{order.our_ref}}</strong></div>
+				</td>
+				<!-- <td width="19%">
+					<div class="delLabel" lng="Delivery Date"></div>
+					<div class="delDate">{{order.delivery_date}}</div>
+				</td> -->
+				<td width="49%">
+					<div class="delLabel">{{order.buyer_name}}</div>
+					<div class="delDate" ng-bind-html="order.amount" ></div>
+				</td>
+				<td width="26%" class="center">
+					<a href="#add/{{order.id}}" class="edit view">view</a><a href="#order/{{order.id}}" class="edit" ng-show="order.is_editable">edit</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<ul class="pagination" ng-show="is_pagination">
+		<li ng-click="page(backlink)" lng="Previous"></li>
+		<li ng-repeat="pag in pagg" ng-click="page(pag.pag - 1)" class="{{pag.active}}">{{pag.pag}}</li>
+		<li ng-click="page(nextlink)" lng="Next"></li>
+	</ul>
+	</div>
+</div>
