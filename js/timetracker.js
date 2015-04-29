@@ -1,6 +1,37 @@
 window.addEventListener('load', function() { FastClick.attach(document.body); }, false);
 function exitTheApp(){ navigator.app.exitApp(); }
 
+function date_fromater(format,date){
+  if(!format) return '';
+  if(!date) return '';
+  var day = date.getDate();
+  var month = date.getMonth()+1;
+  var year = date.getFullYear();
+  if(day < 10 ){ day = '0'+day; }
+  if(month < 10 ){ month = '0'+month; }
+  switch(format){
+    case 'MM/dd/yyyy':
+      return month + '/' + day + '/' + year;
+      break;
+    case 'dd/MM/yyyy':
+      return day + '/' + month + '/' + year;
+      break;
+    case 'yyyy-MM-dd':
+      return year + '-' + month + '-' + day;
+      break;
+    case 'dd.MM.yyyy':
+      return day + '.' + month + '.' + year;
+      break;
+    case 'yyyy.MM.dd':
+      return year + '.' + month + '.' + day;
+      break;
+    case 'yyyy/MM/dd':
+      return year + '/' + month + '/' + day;
+      break;
+  }
+  return '';
+}
+
 var app = angular.module('orders', ['ngRoute','angular-gestures','ngSanitize','ui.bootstrap']);
 app.config(function ($routeProvider) {
   $routeProvider

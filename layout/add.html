@@ -1,4 +1,5 @@
 <div ng-include="'layout/menu.html'" ></div>
+<datepicker ng-model="dt" class="well well-sm dropdown-menu" datepicker-options="dateOptions" ng-show="openeds"></datepicker>
 <div hm-swipe-right="handleGesture($event)">
 	<div class="menu"><span class="title" lng="Contracts"></span><span class="left snap" ng-click="snap()"></span></div>
 	<div class="loading"><div class="trans"></div><div class="tree"></div><img src="images/loading.gif" id="loading" /></div>
@@ -9,15 +10,15 @@
 				<input type="radio" ng-model="client.types" ng-change="myVar.types=''" value="1" id="new_1" class="radio"/><label for="new_1" class="align_label" ng-class="myVar.types" >Nouveau client</label>
 			</div>
 			<div>
-				<div><label for="input_1">Jour de visite:</label><input type="text" id="input_1" ng-model="cStuff.jour_de_visite" /></div>
-				<div><label for="input_2">Commercial:</label><input type="text" id="input_2" ng-model="cStuff.commercial" /></div>
+				<div><label for="input_1">Jour de visite:</label><input type="text" class="date" lng="Jour de visite" autocapitalize="off" autocorrect="off" ng-model="cStuff.jour_de_visite" ng-click="open($event)" readonly="readonly" id="jours"></div>
+				<div><label for="input_2" style="margin-top:20px;">Commercial:</label><div class="auto_wrap"><input type="text" ng-model="cStuff.commercial" lng="Commercial" typeahead="user.label for user in getLocation($viewValue,'authors')"  typeahead-on-select="autou($item)" typeahead-min-length="0" typeahead-wait-ms="200" class="autocomplete margin_right" typeahead-loading="loading3" typeahead-on-change="cs3()" ><div ng-show="loading3" class="loadingAuto">Loading</div></div></div>
 			</div>
 			<div ng-if="client.types==0">
 				<div ng-if="c_id==0">
-					<input type="text" ng-model="custname" lng="Select Customer" typeahead="authors.ref for authors in getLocation($viewValue,'customers_auto')"  typeahead-on-select="autos($item)" typeahead-min-length="0" typeahead-wait-ms="200" class="autocomplete margin_right" typeahead-loading="loading" typeahead-on-change="cs()" ng-class="myVar.cname">
-					<div ng-show="loading" class="loadingAuto">Loading</div>
-					<input type="text" ng-model="s_customer_id" lng="Select Contact" typeahead="cont.label for cont in getLocation($viewValue,'contacts_auto')"  typeahead-on-select="autosc($item)" typeahead-min-length="0" typeahead-wait-ms="200" class="autocomplete" typeahead-loading="loading1" typeahead-on-change="cs2()">
-					<div ng-show="loading1" class="loadingAuto">Loading</div>
+					<div><label style="margin-top:20px;">Société:</label><div class="auto_wrap"><input type="text" ng-model="custname" lng="Société" typeahead="authors.ref for authors in getLocation($viewValue,'customers_auto')"  typeahead-on-select="autos($item)" typeahead-min-length="0" typeahead-wait-ms="200" class="autocomplete margin_right" typeahead-loading="loading" typeahead-on-change="cs()" ng-class="myVar.cname">
+					<div ng-show="loading" class="loadingAuto">Loading</div></div></div>
+					<div><label style="margin-top:20px;">Personne de contact:</label><div class="auto_wrap">
+					<input type="text" ng-model="s_customer_id" lng="Personne de contact" typeahead="cont.label for cont in getLocation($viewValue,'contacts_auto')"  typeahead-on-select="autosc($item)" typeahead-min-length="0" typeahead-wait-ms="200" class="autocomplete" typeahead-loading="loading1" typeahead-on-change="cs2()"><div ng-show="loading1" class="loadingAuto">Loading</div></div></div>
 				</div>
 				<div class="c_details_box">
 					<div class="c_details">
@@ -42,28 +43,29 @@
 				</div>
 			</div>
 			<div ng-if="client.types==1">
-				<p>Coordonnées du restaurant</p>
+				<p class="header_p">Coordonnées du restaurant</p>
 				<div>
 					<div><label for="input_3">Nom:</label><input type="text" id="input_3" ng-model="cStuff.customer_name" ng-class="myVar.cname"/></div>
 					<div><label for="input_4">Adresse:</label><input type="text" id="input_4" ng-model="cStuff.address"/></div>
-					<div><label for="input_16">Zip:</label><input type="text" id="input_16" ng-model="cStuff.zip"/></div>
-					<div><label for="input_17">City:</label><input type="text" id="input_17" ng-model="cStuff.city"/></div>
+					<div><label for="input_16">Code postal:</label><input type="text" id="input_16" ng-model="cStuff.zip"/></div>
+					<div><label for="input_17">Ville:</label><input type="text" id="input_17" ng-model="cStuff.city"/></div>
 					<div><label for="input_5">Tel:</label><input type="text" id="input_5" ng-model="cStuff.tell"/></div>
 					<div><label for="input_6">Mail:</label><input type="text" id="input_6" ng-model="cStuff.mail"/></div>
 				</div>
-				<p>Personne de contact</p>
+				<p class="header_p">Personne de contact</p>
 				<div>
 					<div><label for="input_7">Nom:</label><input type="text" id="input_7" ng-model="cStuff.contactName"/></div>
 					<div><label for="input_8">Function:</label><input type="text" id="input_8" ng-model="cStuff.function"/></div>
 					<div><label for="input_9">Mail:</label><input type="text" id="input_9" ng-model="cStuff.email"/></div>
 					<div><label for="input_10">GSM:</label><input type="text" id="input_10" ng-model="cStuff.phone"/></div>
 				</div>
-				<p><input type="checkbox" id="input_16" ng-click="copyaddr($event)" value="mama" /> <label for="input_16">Même adresse que le restauran</label></p>
+				<p class="header_p">Coordonnées de la société</p>
+				<p style="margin-top:15px;"><input type="checkbox" id="input_18" ng-click="copyaddr($event)" value="mama" /> <label for="input_18">Même adresse que le restaurant</label></p>
 				<div>
 					<div><label for="input_11">Nom:</label><input type="text" id="input_11" ng-model="cStuff.dcustomer_name"/></div>
 					<div><label for="input_12">Adresse:</label><input type="text" id="input_12" ng-model="cStuff.daddress"/></div>
-					<div><label for="input_18">Zip:</label><input type="text" id="input_18" ng-model="cStuff.dcity"/></div>
-					<div><label for="input_19">City:</label><input type="text" id="input_19" ng-model="cStuff.dcity"/></div>
+					<div><label for="input_18">Code postal:</label><input type="text" id="input_18" ng-model="cStuff.dcity"/></div>
+					<div><label for="input_19">Ville:</label><input type="text" id="input_19" ng-model="cStuff.dcity"/></div>
 					<div><label for="input_13">Tel:</label><input type="text" id="input_13" ng-model="cStuff.dtell"/></div>
 					<div><label for="input_14">Mail:</label><input type="text" id="input_14" ng-model="cStuff.dmail"/></div>
 					<div><label for="input_15">Numéro d’entreprise:</label><input type="text" id="input_15" ng-model="cStuff.dnumero"/></div>
@@ -79,15 +81,15 @@
 			</div>
 			<p>Réseaux sociaux</p>
 			<div>
-				<div><input type="checkbox" id="input_3" ng-model="cStuff.socials.fb" /><label class="align_label" for="input_3">Facebook</label><input ng-model="cStuff.soc.fb" type="text" id="input_9" /></div>
-				<div><input type="checkbox" id="input_4" ng-model="cStuff.socials.go" /><label class="align_label" for="input_4">Google+</label><input ng-model="cStuff.soc.go" type="text" id="input_10" /></div>
-				<div><input type="checkbox" id="input_5" ng-model="cStuff.socials.pi" /><label class="align_label" for="input_5">Pinterest</label><input ng-model="cStuff.soc.pi" type="text" id="input_11" /></div>
-				<div><input type="checkbox" id="input_6" ng-model="cStuff.socials.li" /><label class="align_label" for="input_6">Linkedin</label><input ng-model="cStuff.soc.li" type="text" id="input_12" /></div>
-				<div><input type="checkbox" id="input_7" ng-model="cStuff.socials.in" /><label class="align_label" for="input_7">Instagram</label><input ng-model="cStuff.soc.in" type="text" id="input_13" /></div>
-				<div><input type="checkbox" id="input_8" ng-model="cStuff.socials.au" /><label class="align_label" for="input_8">Autre</label><input ng-model="cStuff.soc.au" type="text" id="input_14" /></div>
+				<div><input type="checkbox" id="input_3" ng-model="cStuff.socials.fb" /><label class="align_label" for="input_3">Facebook</label><input class="hide" ng-model="cStuff.soc.fb" type="text" id="input_9" /></div>
+				<div><input type="checkbox" id="input_4" ng-model="cStuff.socials.go" /><label class="align_label" for="input_4">Google+</label><input class="hide" ng-model="cStuff.soc.go" type="text" id="input_10" /></div>
+				<div><input type="checkbox" id="input_5" ng-model="cStuff.socials.pi" /><label class="align_label" for="input_5">Pinterest</label><input class="hide" ng-model="cStuff.soc.pi" type="text" id="input_11" /></div>
+				<div><input type="checkbox" id="input_6" ng-model="cStuff.socials.li" /><label class="align_label" for="input_6">Linkedin</label><input class="hide" ng-model="cStuff.soc.li" type="text" id="input_12" /></div>
+				<div><input type="checkbox" id="input_7" ng-model="cStuff.socials.in" /><label class="align_label" for="input_7">Instagram</label><input class="hide" ng-model="cStuff.soc.in" type="text" id="input_13" /></div>
+				<div><input type="checkbox" id="input_8" ng-model="cStuff.socials.au" /><label class="align_label" for="input_8">Autre</label><input class="hide" ng-model="cStuff.soc.au" type="text" id="input_14" /></div>
 			</div>
 			<div class="clearfix margin-top">
-				<button class="croped left" ng-click="go_to(1)" lng="Page suivante"></button>
+				<button class="croped left" ng-click="go_to(1)" lng="Page précédente"></button>
 				<button class="croped right" ng-click="go_to(3)" lng="Page suivante"></button>
 			</div>
 		</div>
@@ -110,7 +112,7 @@
 					<textarea id="input_9" rows="6" ng-model="cStuff.remarq"></textarea> </div>
 			</div>
 			<div class="clearfix margin-top">
-				<button class="croped left" ng-click="go_to(2)" lng="Page suivante"></button>
+				<button class="croped left" ng-click="go_to(2)" lng="Page précédente"></button>
 				<button class="croped right" ng-click="go_to(4)" lng="Page suivante"></button>
 			</div>
 		</div>
@@ -245,7 +247,7 @@ Jours de fermeture
 				</tbody>
 			</table>
 			<div class="clearfix margin-top">
-				<button class="croped left" ng-click="go_to(3)" lng="Page suivante"></button>
+				<button class="croped left" ng-click="go_to(3)" lng="Page précédente"></button>
 				<button class="croped right" ng-click="go_to(5)" lng="Page suivante"></button>
 			</div>
 		</div>
@@ -335,7 +337,7 @@ Jours de fermeture
 				</div>
 			</div>
 			<div class="clearfix margin-top">
-				<button class="croped left" ng-click="go_to(4)" lng="Page suivante"></button>
+				<button class="croped left" ng-click="go_to(4)" lng="Page précédente"></button>
 				<button class="croped right" ng-click="go_to(6)" lng="Page suivante"></button>
 			</div>
 		</div>
@@ -352,7 +354,7 @@ Jours de fermeture
 				<div><input type="radio" class="radio" name="infos" value="1" id="input_5" ng-model="cStuff.infos"/><label class="align_label" for="input_5">Informations seront communiquées ultérieurement, date</label></div>
 			</div>
 			<div class="clearfix margin-top">
-				<button class="croped left" ng-click="go_to(5)" lng="Page suivante"></button>
+				<button class="croped left" ng-click="go_to(5)" lng="Page précédente"></button>
 				<button class="croped right" ng-click="go_to(7)" lng="Page suivante"></button>
 			</div>
 		</div>
@@ -373,7 +375,7 @@ Jours de fermeture
 				</ul>
 			</div>
 			<div class="clearfix margin-top">
-				<button class="croped left" ng-click="go_to(6)" lng="Page suivante"></button>
+				<button class="croped left" ng-click="go_to(6)" lng="Page précédente"></button>
 				<button class="croped right" ng-click="go_to(8)" lng="Page suivante"></button>
 			</div>
 		</div>
@@ -405,7 +407,7 @@ Jours de fermeture
 				</div>
 			</div>
 			<div class="clearfix margin-top">
-				<button class="croped left" ng-click="go_to(7)" lng="Page suivante"></button>
+				<button class="croped left" ng-click="go_to(7)" lng="Page précédente"></button>
 				<button class="croped right" ng-click="save()" lng="Sauvegarder"></button>
 			</div>
 		</div>

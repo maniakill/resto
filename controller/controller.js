@@ -39,6 +39,8 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
   var getparams = {'do' : 'restopass-orders',view:0};
   $scope.views = [{name:'All',view:'all',active:'active',p:'0'}];
   $scope.orders = [];
+  $scope.openeds = false;
+  $scope.selectedInput = null;
   // ,{name:'My orders',view:'my_order',active:'',p:'4'},{name:'Draft',view:'draft',active:'',p:'1'},{name:'Ready to deliver',view:'ready',active:'',p:'2'},{name:'Fully delivered',view:'fully',active:'',p:'3'}
   $scope.snap = function(){
     angular.element('.main_menu').show(0,function(){
@@ -47,6 +49,22 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
       $timeout(function(){ _this.addClass('slide_left'); });
     });
   }
+  $scope.today = function() { $scope.dt = new Date(); };
+  $scope.today();
+  $scope.clear = function () { $scope.dt = null; };
+  $scope.open = function($event,type) {
+    $event.stopPropagation();
+    $scope.openeds = true;
+    $scope.selectedInput = type;
+  };
+  $scope.$on('selectDate',function(arg,args){
+    var d = date_fromater($scope.pick_date_format,args);
+    $scope[$scope.selectedInput] = d;
+    $scope.openeds = false;
+    $scope.selectedInput = null;
+  });
+  $scope.$on('closeDateP',function(arg){ $scope.openeds = false; });
+  $scope.dateOptions = { 'starting-day': 1,'show-weeks':false, };
   $scope.showSearch = function(){
     $scope.search = !$scope.search;
     angular.element('.search').toggleClass('cancel');
@@ -76,6 +94,11 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
       project.stopLoading();
     },function(){project.stopLoading();});
   }
+  $scope.open = function($event,type) {
+    $event.stopPropagation();
+    $scope.openeds = true;
+    $scope.selectedInput = type;
+  };
   $timeout( function(){ $scope.doIt('get',getparams); });
 
 }]).controller('menu',['$scope','project','$timeout','$location',function ($scope,project,$timeout,$location){
@@ -99,7 +122,25 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
   $scope.photos = {types : 0};
   $scope.sigCapture = null;
   $scope.conditions = false;
-  $scope.sendEmail = { show : false } ;
+  $scope.sendEmail = { show : false };
+  $scope.openeds = false;
+  $scope.pick_date_format = 'dd/MM/yyyy';
+
+  $scope.today = function() { $scope.dt = new Date(); };
+  $scope.today();
+  $scope.clear = function () { $scope.dt = null; };
+  $scope.open = function($event) {
+    $event.stopPropagation();
+    $scope.openeds = true;
+  };
+  $scope.$on('selectDate',function(arg,args){
+    var d = date_fromater($scope.pick_date_format,args);
+    $scope.cStuff.jour_de_visite = d;
+    $scope.openeds = false;
+  });
+  $scope.$on('closeDateP',function(arg){ $scope.openeds = false; });
+  $scope.dateOptions = { 'starting-day': 1,'show-weeks':false, };
+
   $scope.go_to = function(i){
     switch (i){
       case 2:
@@ -126,37 +167,44 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
         }
       });
     }
-    // $timeout(function(){ console.log($scope.cStuff) });
+    $timeout(function(){ console.log($scope.cStuff) });
   }
   $scope.clear = function(){
     if($scope.sigCapture){
       $scope.sigCapture.clear();
     }
   }
+  $scope.autou = function(item){
+    $scope.cStuff.commercial_id = item.id;
+  }
+  $scope.cs3 = function(){
+    $scope.cStuff.commercial_id = '';$scope.cStuff.commercial = '';
+  }
   $scope.autos = function(item){
     $scope.myVar.cname='';
     $scope.lq = item.lang_id && item.lang_id!=0 ? item.lang_id : 1 ; $scope.c=item.currency_id && item.currency_id!=0 ? item.currency_id : 1; $scope.custname= item.ref;
     $scope.s_buyer_id = item.label; $scope.contact_id='';$scope.s_customer_id='';
+    $scope.cStuff.customer_name = item.ref;
     var details = { 'do':'restopass-xcustomer_details', c_id:item.id };
     $scope.doIt('get',details,function(r){
-      for(x in r.data){
+      for(x in r){
         if(x == 'in'){
           continue;
         }
-        $scope.cStuff[x] = r.data[x];
+        $scope.cStuff[x] = r[x];
       }
       $scope.cStuff.buyer_id=item.id;
     });
   }
   $scope.autosc = function(item){
-    $scope.contact_id=item.id; $scope.s_buyer_id = item.c_name; $scope.buyer_id=item.customer_id;
+    $scope.contact_id=item.id; $scope.s_buyer_id = item.c_name; $scope.buyer_id=item.customer_id; $scope.s_customer_id=item.label;
     var details = { 'do':'restopass-xcustomer_details', c_id:item.customer_id,contact_id:item.id };
     $scope.doIt('get',details,function(r){
-      for(x in r.data){
+      for(x in r){
         if(x == 'in'){
           continue;
         }
-        $scope.cStuff[x] = r.data[x];
+        $scope.cStuff[x] = r[x];
       }
       $scope.cStuff.buyer_id=item.customer_id;
     });
@@ -302,8 +350,11 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
   $scope.doIt = function(method,params,callback){
     project.doGet(method,params).then(function(r){
       var res = r.data;
+      console.log(res);
       if(res.code!='error'){
         if (callback && typeof(callback) === "function") { callback(res); }
+      }else{
+        $location.path('/contracts');
       }
       project.stopLoading();
     },function(){project.stopLoading();});
