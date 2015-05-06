@@ -115,7 +115,16 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
   $scope.c_id = isNaN($routeParams.id) === false ? $routeParams.id : 0;
   var getparams = {'do' : 'restopass-order',c_id:$scope.c_id};
   $scope.step=1;
-  $scope.cStuff = { comp_start : false, c_start : false };
+  $scope.cStuff = { comp_start : false, c_start : false,
+    orar : { luni: { from: '', to: '',from2: '', to2: ''},
+           marti: { from: '', to: '',from2: '', to2: ''},
+           miercuri: { from: '', to: '',from2: '', to2: ''},
+           joi: { from: '', to: '',from2: '', to2: ''},
+           vineri: { from: '', to: '',from2: '', to2: ''},
+           sambata: { from: '', to: '',from2: '', to2: ''},
+           duminica: { from: '', to: '',from2: '', to2: ''}
+         }
+   };
   $scope.client = {};
   $scope.myVar = {};
   $scope.image = [];
@@ -125,6 +134,28 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
   $scope.sendEmail = { show : false };
   $scope.openeds = false;
   $scope.pick_date_format = 'dd/MM/yyyy';
+  $scope.hours=[]
+
+  for (var i = 7; i < 24; i++) {
+    var text = i;
+    if(text < 10){
+      text='0'+text;
+    }
+    $scope.hours.push(text+':00');
+    if(text != 23 ){
+      $scope.hours.push(text+':30');
+    }
+  };
+
+  $scope.status = {
+    isopen: false
+  };
+
+  $scope.toggleDropdown = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.status.isopen = !$scope.status.isopen;
+  };
 
   $scope.today = function() { $scope.dt = new Date(); };
   $scope.today();

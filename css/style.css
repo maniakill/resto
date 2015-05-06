@@ -75,6 +75,7 @@ button:active { border: 2px solid #aecbdc; background: #eaf2f6; color: #5d97b9; 
 .loaded { overflow: auto; -webkit-overflow-scrolling: touch; position: fixed; bottom: 0px; width: 100%; top: 128px; z-index: 1; }
 .lower { top: 276px; }
 .dropdown-menu { left: 0; position: fixed; right: 0; padding: 20px 2.865% 20px 2.865%; background: #EAF2F6; z-index: 3; overflow: auto; -webkit-overflow-scrolling: touch; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; height: 100%; top: auto; display: block; }
+.dropdown-menub { position: absolute;top: 100%;left: 0;z-index: 1000;display: none;float: left;min-width: 160px;padding: 5px 0;margin: 2px 0 0;font-size: 14px;list-style: none;background-color: #fff;border: 1px solid #ccc;border: 1px solid rgba(0,0,0,0.15);border-radius: 4px;-webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);box-shadow: 0 6px 12px rgba(0,0,0,0.175);background-clip: padding-box; height: 220px; right: auto; }
 	.dropdown-menu table { width: 100%; font-size: 18px; }
 		.dropdown-menu table tr td { padding: 10px; }
 		.dropdown-menu table th { text-align: center; }
@@ -307,7 +308,7 @@ button.close { -webkit-appearance: none; padding: 0; cursor: pointer; background
 .add-page { top: 63px; }
 .add-page .form { padding: 20px;}
 .add-page input.radio{ -webkit-appearance: radio; width: auto; margin: 10px 10px 0 ; }
-.add-page label { font-size: 16px; font-weight: normal; color: #777; width: 40%; white-space: nowrap; display: inline-block; vertical-align: middle; }
+.add-page label { font-size: 16px; font-weight: normal; color: #777; width: 40%; white-space: nowrap; display: inline-block; vertical-align: middle; margin-top: 11px; }
 .add-page p {font-size: 16px; color: #111; }
 .add-page input[type="checkbox"]{ height: 32px; width: 32px; margin-right: 10px; }
 .add-page .margin-top { margin-top: 20px; }
@@ -331,11 +332,11 @@ button.close { -webkit-appearance: none; padding: 0; cursor: pointer; background
 .add-page label.break_l { width: 95%; white-space: pre-line; }
 .days { width: 100%; margin-top: 20px; }
 .days .th { font-size: 16px; padding: 10px 20px; border-top: 1px solid #5d97b9; border-left: 1px solid #5d97b9; background: #aecbdc; color: #fff;border-right: 0px solid #5d97b9; }
-.days td { padding: 10px 20px; /*border: 1px solid #5d97b9;*/ border-right: 1px solid #5d97b9; border-top: 1px solid #5d97b9; border-left: 1px solid #5d97b9; }
+.days td { padding: 10px 15px; /*border: 1px solid #5d97b9;*/ border-right: 1px solid #5d97b9; border-top: 1px solid #5d97b9; border-left: 1px solid #5d97b9; }
 .days td.last { border-bottom: 1px solid #5d97b9; }
-.days td div { display: inline-block; }
-.days td div:first-child { border-right: 1px solid #5d97b9; margin-right: 20px; }
-.add-page .days label { width: 50px; }
+.days td div { display: inline-block; float: left; }
+.days td div:first-child { border-right: 1px solid #5d97b9; margin-right: 15px; }
+.add-page .days label { width: 35px; float: left; }
 .add-page input.red { box-shadow: 0px 0px 0px 4px #FFB2B2; }
 .add-page label.red { color:#FF3333; }
 .add_photo_menu a{ font-size: 22px; padding-bottom: 15px; display: block; }
@@ -355,3 +356,6 @@ button.close { -webkit-appearance: none; padding: 0; cursor: pointer; background
 .sendEmailBtns button { float: right; margin-left: 20px; }
 .header_p { border-top: 1px solid #99b4c2; margin-top: 30px; padding-top: 15px; }
 .auto_wrap { display: inline-block; position: relative; width: 60%; }
+.btndrop { width: 85px; margin-right: 15px; }
+.dropdown-menub li { padding: 0px;}
+.dropdown-menub li a { padding: 10px 20px; }

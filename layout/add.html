@@ -126,127 +126,400 @@ Jours de fermeture
 			<table class="days" cellpadding="0" cellspacing="0">
 				<tbody>
 					<tr>
-						<td class="th">Lundi</td>
+						<td class="th">
+							<p>Lundi</p>
+							<div><label for="input_1" style="width:50px;">Fermé</label><input type="checkbox" id="input_1" ng-model="cStuff.orar.luni.closed" style="vertical-align: middle; box-shadow:none;"></div>
+						</td>
 						<td>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.luni.from"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.luni.from}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.luni.from = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.luni.from"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.luni.to"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen2">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.luni.to}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.luni.to = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.luni.to"/>
 							</div>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.luni.from2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen3">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.luni.from2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.luni.from2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.luni.from2"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.luni.to2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen4">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.luni.to2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.luni.to2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.luni.to2"/>
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td class="th">Mardi</td>
+						<td class="th">
+							<p>Mardi</p>
+							<div><label for="input_2" style="width:50px">Fermé</label><input type="checkbox" id="input_2" ng-model="cStuff.orar.marti.closed" style="vertical-align: middle; box-shadow:none;"></div>
+						</td>
 						<td>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.marti.from"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen5">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.marti.from}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.marti.from = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.marti.from"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.marti.to"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen6">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.marti.to}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.marti.to = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.marti.to"/>
 							</div>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.marti.from2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen7">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.marti.from2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.marti.from2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.marti.from2"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.marti.to2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen8">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.marti.to2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.marti.to2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.marti.to2"/>
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td class="th">Mercredi</td>
+						<td class="th">
+							<p>Mercredi</p>
+							<div><label for="input_3" style="width:50px;">Fermé</label><input type="checkbox" id="input_3" ng-model="cStuff.orar.miercuri.closed" style="vertical-align: middle; box-shadow:none;"></div>
+						</td>
 						<td>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.miercuri.from"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen9">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.miercuri.from}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.miercuri.from = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.miercuri.from"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.miercuri.to"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen10">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.miercuri.to}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.miercuri.to = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.miercuri.to"/>
 							</div>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.miercuri.from2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen11">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.miercuri.from2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.miercuri.from2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.miercuri.from2"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.miercuri.to2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen12">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.miercuri.to2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.miercuri.to2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.miercuri.to2"/>
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td class="th">Jeudi</td>
+						<td class="th">
+							<p>Jeudi</p>
+							<div><label for="input_4" style="width:50px;">Fermé</label><input type="checkbox" id="input_4" ng-model="cStuff.orar.joi.closed" style="vertical-align: middle; box-shadow:none;"></div>
+						</td>
 						<td>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.joi.from"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen13">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.joi.from}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.joi.from = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.joi.from"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.joi.to"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen14">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.joi.to}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.joi.to = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.joi.to"/>
 							</div>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.joi.from2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen15">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.joi.from2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.joi.from2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.joi.from2"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.joi.to2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen16">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.joi.to2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.joi.to2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.joi.to2"/>
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td class="th">Vendredi</td>
+						<td class="th">
+							<p>Vendredi</p>
+							<div><label for="input_5" style="width:50px;">Fermé</label><input type="checkbox" id="input_5" ng-model="cStuff.orar.vineri.closed" style="vertical-align: middle; box-shadow:none;"></div>
+						</td>
 						<td>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.vineri.from"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen17">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.vineri.from}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.vineri.from = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.vineri.from"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.vineri.to"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen18">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.vineri.to}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.vineri.to = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.vineri.to"/>
 							</div>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.vineri.from2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen19">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.vineri.from2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.vineri.from2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.vineri.from2"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.vineri.to2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen20">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.vineri.to2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.vineri.to2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.vineri.to2"/>
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td class="th">Samedi</td>
+						<td class="th">
+							<p>Samedi</p>
+							<div><label for="input_6" style="width:50px;">Fermé</label><input type="checkbox" id="input_6" ng-model="cStuff.orar.sambata.closed" style="vertical-align: middle; box-shadow:none;"></div>
+						</td>
 						<td>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.sambata.from"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen21">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.sambata.from}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.sambata.from = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.sambata.from"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.sambata.to"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen22">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.sambata.to}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.sambata.to = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.sambata.to"/>
 							</div>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.sambata.from2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen23">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.sambata.from2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.sambata.from2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.sambata.from2"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.sambata.to2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen24">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.sambata.to2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.sambata.to2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.sambata.to2"/>
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td class="last th">Dimanche</td>
+						<td class="last th">
+							<p>Dimanche</p>
+							<div><label for="input_7" style="width:50px;">Fermé</label><input type="checkbox" id="input_7" ng-model="cStuff.orar.duminica.closed" style="vertical-align: middle; box-shadow:none;"></div>
+						</td>
 						<td class="last">
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.duminica.from"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen25">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.duminica.from}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.duminica.from = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.duminica.from"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.duminica.to"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen26">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.duminica.to}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.duminica.to = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.duminica.to"/>
 							</div>
 							<div>
 								<label>De:</label>
-								<input ng-model="cStuff.orar.duminica.from2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen27">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.duminica.from2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.duminica.from2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.duminica.from2"/>
 								<label>À:</label>
-								<input ng-model="cStuff.orar.duminica.to2"/>
+								<!-- Single button -->
+							    <div class="btn-group" dropdown is-open="status.isopen28">
+							      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+							        {{cStuff.orar.duminica.to2}} <span class="caret"></span>
+							      </button>
+							      <ul class="dropdown-menu dropdown-menub" role="menu">
+							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.duminica.to2 = hour">{{hour}}</a></li>
+							      </ul>
+							    </div>
+								<input type="hidden" ng-model="cStuff.orar.duminica.to2"/>
 							</div>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<div class="clearfix margin-top">
+			<div class="clearfix margin-top" style="margin-bottom:154px;">
 				<button class="croped left" ng-click="go_to(3)" lng="Page précédente"></button>
 				<button class="croped right" ng-click="go_to(5)" lng="Page suivante"></button>
 			</div>
