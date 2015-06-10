@@ -663,11 +663,26 @@ Jours de fermeture
 					<p>Le Restaurateur déclare avoir pris connaissance des conditions générales de RestoPass® qui sont, par ailleurs, disponibles à l’adresse internet suivante : www.restopass.com/conditionsgenerales</p>
 					<p>Le Restaurateur déclare accepter sans réserve les conditions générales de RestoPass® et accepte, le cas échéant, expressément d’écarter ses propres conditions générales.</p>
 				</div>
-				<div><a class="links" href="" ng-click="pdfs=!pdfs">Prévisualisation du contrat en PDF </a></div>
+				<div class="signature">
+					<div style="width:730px; height:410px;">
+						<canvas id="signature" height="404" width="724" ></canvas>
+					</div>
+					<button class="croped" ng-click="clear()" lng="Clear"></button>
+				</div>
+				<div class="clearfix margin-top">
+					<label class="left" style="margin-right: 20px;">Prévisualisation du contrat en PDF </label>
+					<!-- <div > -->
+						<button class="croped left" style="margin-right: 20px;" ng-click="pdfs=!pdfs" lng="FR"></button>
+						<!-- <button class="croped left" ng-click="pdfs=!pdfs" lng="NL"></button> -->
+					<!-- </div> -->
+				</div>
 				<div ng-if="pdfs" class="conditions">
 					<div ng-include="'layout/pdf.html'" ></div>
 				</div>
-				<div><a class="links" href="" ng-click="sendEmail.show=!sendEmail.show">Envoi par mail  </a></div>
+				<div class="clearfix margin-top">
+					<button class="croped left" ng-click="sendEmail.show=!sendEmail.show" lng="Envoi par mail"></button>
+					<!-- <a class="links" href="" ng-click="sendEmail.show=!sendEmail.show">Envoi par mail  </a> -->
+				</div>
 				<div class="send_by_email" ng-if="sendEmail.show">
 					<div><label>To:</label><input type="text" ng-model="sendEmail.email"></div>
 					<div><label>Subject:</label><input type="text" ng-model="sendEmail.subject"></div>
@@ -677,12 +692,7 @@ Jours de fermeture
 						<button class="croped" ng-click="SendEmail()" lng="Send"></button>
 					</div>
 				</div>
-				<div class="signature">
-					<div style="width:730px; height:410px;">
-						<canvas id="signature" height="404" width="724" ></canvas>
-					</div>
-					<button class="croped" ng-click="clear()" lng="Clear"></button>
-				</div>
+
 			</div>
 			<div class="clearfix margin-top">
 				<button class="croped left" ng-click="go_to(7)" lng="Page précédente"></button>

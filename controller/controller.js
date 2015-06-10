@@ -358,7 +358,9 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
       var p = $.param(data);
        project.doGet('post',p).then(function(r) {
         if(r.data.code == 'ok'){
-          $location.path('/contracts');
+          console.log(r);
+          $scope.c_id = r.data.response;
+          // $location.path('/contracts');
         }else{
           $scope.alerts=[{type:'danger',msg:r.data.error_code}];
         }
@@ -422,7 +424,9 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
   }
 ]).controller('pdf',['$scope','$location','$routeParams',
   function ($scope, $location, $routeParams) {
-    $scope.c_id = isNaN($routeParams.id) === false ? $routeParams.id : false;
+    if(!$scope.c_id){
+      $scope.c_id = isNaN($routeParams.id) === false ? $routeParams.id : false;
+    }
 
     var url = 'https://app.salesassist.eu/pim/mobile/admin/?api_key='+localStorage.Rtoken+'&do=restopass-contract_print&username='+localStorage.Rusername+'&c_id='+$scope.c_id;
       PDFJS.workerSrc = 'js/pdf.worker.js';
