@@ -1,0 +1,21 @@
+<div ng-controller="pdf">
+	<div ng-show="c_id">
+		<div class="quotePreview" id="quotePreview">
+		    <center style="margin:10px; font-size:15px;">Loading PDF</center>
+		  <div class="bx-wrapper hide " style="max-width: 100%; margin: 0px auto;" id="bxWrapper">
+		    <div class="bx-controls bx-has-controls-direction clearfix">
+		      <div class="bx-controls-direction">
+		        <a href="#" class="bx-prev" id="prev"><</a>
+		        <span id="bar_shadow"></span>
+		        <input type="text" class="selected_bx_page" id="page_num" value="1">
+		        <span class="total_pages" id="page_count" >/ 1</span>
+		        <a href="#" class="bx-next" id="next">></a>
+		      </div>
+		    </div>
+		  </div>
+		  <canvas id="the-canvas" height="1262" width="892"></canvas>
+		</div>
+		<script type="text/javascript" src="js/pdf.js"></script>
+		<script type="text/javascript" src="js/pdf.worker.js"></script>
+	</div>
+</div>

@@ -238,6 +238,7 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
         $scope.cStuff[x] = r[x];
       }
       $scope.cStuff.buyer_id=item.customer_id;
+      $scope.cStuff.contact_id=item.id;
     });
   }
   $scope.getLocation = function(val,pag) {
@@ -418,5 +419,73 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
       $scope.cancel();
     }
     $scope.cancel = function () { $modalInstance.dismiss('cancel'); };
+  }
+]).controller('pdf',['$scope','$location','$routeParams',
+  function ($scope, $location, $routeParams) {
+    $scope.c_id = isNaN($routeParams.id) === false ? $routeParams.id : false;
+
+    var url = 'https://app.salesassist.eu/pim/mobile/admin/?api_key='+localStorage.Rtoken+'&do=restopass-contract_print&username='+localStorage.Rusername+'&c_id='+$scope.c_id;
+      PDFJS.workerSrc = 'js/pdf.worker.js';
+
+      var pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null, scale = 1.5, canvas = document.getElementById('the-canvas'), ctx = canvas.getContext('2d');
+
+      function renderPage(num) {
+        pageRendering = true;
+        pdfDoc.getPage(num).then(function(page) {
+          var viewport = page.getViewport(scale);
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          var renderContext = {
+            canvasContext: ctx,
+            viewport: viewport
+          };
+          var renderTask = page.render(renderContext);
+          renderTask.promise.then(function () {
+            pageRendering = false;
+            if (pageNumPending !== null) {
+              renderPage(pageNumPending);
+              pageNumPending = null;
+            }
+          });
+        });
+        document.getElementById('page_num').value = pageNum;
+        $('#quotePreview center').remove();
+        $('#bxWrapper').removeClass('hide');
+      }
+
+      function queueRenderPage(num) {
+        if (pageRendering) {
+          pageNumPending = num;
+        } else {
+          renderPage(num);
+        }
+      }
+
+      function onPrevPage(e) {
+        e.preventDefault();
+        if (pageNum <= 1) {
+          return;
+        }
+        pageNum--;
+        queueRenderPage(pageNum);
+      }
+      document.getElementById('prev').addEventListener('click', onPrevPage);
+
+      function onNextPage(e) {
+        e.preventDefault();
+        if (pageNum >= pdfDoc.numPages) {
+          return;
+        }
+        pageNum++;
+        queueRenderPage(pageNum);
+      }
+      document.getElementById('next').addEventListener('click', onNextPage);
+
+      PDFJS.getDocument(url).then(function (pdfDoc_) {
+        // console.log('e');
+        pdfDoc = pdfDoc_;
+        document.getElementById('page_count').textContent = '/ ' + pdfDoc.numPages;
+        renderPage(pageNum);
+      });
   }
 ]);

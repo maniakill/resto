@@ -39,6 +39,7 @@ app.config(function ($routeProvider) {
     .when('/login',{controller: 'login',templateUrl: 'layout/login.html'})
     .when('/login/:error',{controller: 'login',templateUrl: 'layout/login.html'})
     .when('/contracts',{controller: 'contracts',templateUrl: 'layout/contracts.html'})
+    .when('/pdf',{controller: 'pdf',templateUrl: 'layout/pdf.html'})
     .when('/add',{controller: 'add',templateUrl: 'layout/add.html'})
     .when('/add/:id',{controller: 'add',templateUrl: 'layout/add.html'})
     .otherwise({ redirectTo: '/' });

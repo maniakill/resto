@@ -17,6 +17,8 @@
 				<div ng-if="c_id==0">
 					<div><label style="margin-top:20px;">Société:</label><div class="auto_wrap"><input type="text" ng-model="custname" lng="Société" typeahead="authors.ref for authors in getLocation($viewValue,'customers_auto')"  typeahead-on-select="autos($item)" typeahead-min-length="0" typeahead-wait-ms="200" class="autocomplete margin_right" typeahead-loading="loading" typeahead-on-change="cs()" ng-class="myVar.cname">
 					<div ng-show="loading" class="loadingAuto">Loading</div></div></div>
+					<div><label style="margin-top:20px;">Commercial nom:</label><div class="auto_wrap"><input type="text" ng-model="commercial_name" lng="Commercial nom" typeahead="comm.com for comm in getLocation($viewValue,'commercial_auto')"  typeahead-on-select="autos($item)" typeahead-min-length="0" typeahead-wait-ms="200" class="autocomplete margin_right" typeahead-loading="loading2" typeahead-on-change="cs()" >
+					<div ng-show="loading2" class="loadingAuto">Loading</div></div></div>
 					<div><label style="margin-top:20px;">Personne de contact:</label><div class="auto_wrap">
 					<input type="text" ng-model="s_customer_id" lng="Personne de contact" typeahead="cont.label for cont in getLocation($viewValue,'contacts_auto')"  typeahead-on-select="autosc($item)" typeahead-min-length="0" typeahead-wait-ms="200" class="autocomplete" typeahead-loading="loading1" typeahead-on-change="cs2()"><div ng-show="loading1" class="loadingAuto">Loading</div></div></div>
 				</div>
@@ -661,7 +663,10 @@ Jours de fermeture
 					<p>Le Restaurateur déclare avoir pris connaissance des conditions générales de RestoPass® qui sont, par ailleurs, disponibles à l’adresse internet suivante : www.restopass.com/conditionsgenerales</p>
 					<p>Le Restaurateur déclare accepter sans réserve les conditions générales de RestoPass® et accepte, le cas échéant, expressément d’écarter ses propres conditions générales.</p>
 				</div>
-				<div><a class="links" href="" ng-click="openInBrowserP()">Prévisualisation du contrat en PDF </a></div>
+				<div><a class="links" href="" ng-click="pdfs=!pdfs">Prévisualisation du contrat en PDF </a></div>
+				<div ng-if="pdfs" class="conditions">
+					<div ng-include="'layout/pdf.html'" ></div>
+				</div>
 				<div><a class="links" href="" ng-click="sendEmail.show=!sendEmail.show">Envoi par mail  </a></div>
 				<div class="send_by_email" ng-if="sendEmail.show">
 					<div><label>To:</label><input type="text" ng-model="sendEmail.email"></div>
