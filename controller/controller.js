@@ -326,6 +326,7 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
       var data = { 'to':$scope.sendEmail.email,
                    'subject' : $scope.sendEmail.subject,
                    'body' : $scope.sendEmail.emailBody,
+                   'c_id' : $scope.c_id,
                    'do' : 'restopass--restopass-sendMail' }
       if( $scope.c_id != 0 ){
         data.c_id = $scope.c_id;
@@ -380,11 +381,20 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
       $scope.image.splice($scope.imgToDelete, 1);
     }
   }
-
+  $scope.showPdf = function(i){
+    if(i==1){
+      $scope.lng = 1;
+      $scope.pdfsn = !$scope.pdfsn;
+      $scope.pdfs = false;
+    }else{
+      $scope.lng = 0;
+      $scope.pdfs = !$scope.pdfs;
+      $scope.pdfsn = false;
+    }
+  }
   $scope.doIt = function(method,params,callback){
     project.doGet(method,params).then(function(r){
       var res = r.data;
-      console.log(res);
       if(res.code!='error'){
         if (callback && typeof(callback) === "function") { callback(res); }
       }else{
@@ -428,7 +438,7 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
       $scope.c_id = isNaN($routeParams.id) === false ? $routeParams.id : false;
     }
 
-    var url = 'https://app.salesassist.eu/pim/mobile/admin/?api_key='+localStorage.Rtoken+'&do=restopass-contract_print&username='+localStorage.Rusername+'&c_id='+$scope.c_id;
+    var url = 'https://app.salesassist.eu/pim/mobile/admin/?api_key='+localStorage.Rtoken+'&do=restopass-contract_print&username='+localStorage.Rusername+'&c_id='+$scope.c_id+'&lng='+$scope.lng;
       PDFJS.workerSrc = 'js/pdf.worker.js';
 
       var pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null, scale = 1.5, canvas = document.getElementById('the-canvas'), ctx = canvas.getContext('2d');

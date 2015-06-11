@@ -669,17 +669,20 @@ Jours de fermeture
 					</div>
 					<button class="croped" ng-click="clear()" lng="Clear"></button>
 				</div>
-				<div class="clearfix margin-top">
+				<div class="clearfix margin-top" ng-if="c_id">
 					<label class="left" style="margin-right: 20px;">Prévisualisation du contrat en PDF </label>
 					<!-- <div > -->
-						<button class="croped left" style="margin-right: 20px;" ng-click="pdfs=!pdfs" lng="FR"></button>
-						<!-- <button class="croped left" ng-click="pdfs=!pdfs" lng="NL"></button> -->
+						<button class="croped left" style="margin-right: 20px;" ng-click="showPdf()" lng="FR"></button>
+						<button class="croped left" ng-click="showPdf(1)" lng="NL"></button>
 					<!-- </div> -->
 				</div>
 				<div ng-if="pdfs" class="conditions">
 					<div ng-include="'layout/pdf.html'" ></div>
 				</div>
-				<div class="clearfix margin-top">
+				<div ng-if="pdfsn" class="conditions">
+					<div ng-include="'layout/pdf.html'" ></div>
+				</div>
+				<div class="clearfix margin-top" ng-if="c_id">
 					<button class="croped left" ng-click="sendEmail.show=!sendEmail.show" lng="Envoi par mail"></button>
 					<!-- <a class="links" href="" ng-click="sendEmail.show=!sendEmail.show">Envoi par mail  </a> -->
 				</div>
