@@ -57,7 +57,7 @@
 				<p class="header_p">Personne de contact</p>
 				<div>
 					<div><label for="input_7">Nom:</label><input type="text" id="input_7" ng-model="cStuff.contactName"/></div>
-					<div><label for="input_8">Function:</label><input type="text" id="input_8" ng-model="cStuff.function"/></div>
+					<div><label for="input_8">Fonction:</label><input type="text" id="input_8" ng-model="cStuff.function"/></div>
 					<div><label for="input_9">Mail:</label><input type="text" id="input_9" ng-model="cStuff.email"/></div>
 					<div><label for="input_10">GSM:</label><input type="text" id="input_10" ng-model="cStuff.phone"/></div>
 				</div>
@@ -120,7 +120,7 @@
 		</div>
 		<div class="form" ng-if="step==4">
 			<p>Informations générales du restaurant</p>
-			<p>Voir si menu déroulant pour horaires</p>
+			<!-- <p>Voir si menu déroulant pour horaires</p> -->
 			<!-- <p>Prévoir pour horaires du midi (12h-14h30 par exemple)
 Et horaires du soir
 Jours de fermeture
@@ -528,8 +528,8 @@ Jours de fermeture
 		</div>
 		<div class="form" ng-if="step==5">
 			<div><label for="input_1">QUARTIER</label><input ng-model="cStuff.quartier" type="text" id="input_1"></div>
-			<div><label for="input_2">DISTANTION, LABELS</label><input ng-model="cStuff.distantion" type="text" id="input_2"></div>
-			<p id="filters">FILTERS</p>
+			<div><label for="input_2">DISTINCTION, LABELS</label><input ng-model="cStuff.distantion" type="text" id="input_2"></div>
+			<p id="filters">FILTRES</p>
 			<div class="filter_wrap">
 				<div class="clearfix">
 					<div class="filters left">
@@ -597,7 +597,7 @@ Jours de fermeture
 					<h3>Best For</h3>
 					<div><input type="checkbox" id="input_36" ng-model="cStuff.bestfor.amis"/><label class="align_label" for="input_36">Entre amis</label></div>
 					<div><input type="checkbox" id="input_37" ng-model="cStuff.bestfor.amoureux"/><label class="align_label" for="input_37">En amoureux</label></div>
-					<div><input type="checkbox" id="input_38" ng-model="cStuff.bestfor.group"/><label class="align_label" for="input_38">Spècial group</label></div>
+					<div><input type="checkbox" id="input_38" ng-model="cStuff.bestfor.group"/><label class="align_label" for="input_38">Spécial group</label></div>
 					<div><input type="checkbox" id="input_39" ng-model="cStuff.bestfor.affaires"/><label class="align_label" for="input_39">Affaires</label></div>
 					<div><input type="checkbox" id="input_40" ng-model="cStuff.bestfor.occasion"/><label class="align_label" for="input_40">Occasions particulières</label></div><br/>
 					<div><label for="input_41">Autre</label><input type="text" id="input_41"ng-model="cStuff.bestfor.autre"></div>
@@ -626,7 +626,7 @@ Jours de fermeture
 				<div><label for="input_3">Texte ANG</label>
 					<textarea id="input_3" rows="6" ng-model="cStuff.descriptionen"></textarea> </div>
 				<div><input type="radio" class="radio" name="infos" value="0" id="input_4" ng-model="cStuff.infos"/><label class="align_label" for="input_4">Informations reçues ce jour</label></div>
-				<div><input type="radio" class="radio" name="infos" value="1" id="input_5" ng-model="cStuff.infos"/><label class="align_label" for="input_5">Informations seront communiquées ultérieurement, date</label></div>
+				<!-- <div><input type="radio" class="radio" name="infos" value="1" id="input_5" ng-model="cStuff.infos"/><label class="align_label" for="input_5">Informations seront communiquées ultérieurement, date</label></div> -->
 			</div>
 			<div class="clearfix margin-top">
 				<button class="croped left" ng-click="go_to(5)" lng="Page précédente"></button>
@@ -636,7 +636,7 @@ Jours de fermeture
 		<div class="form" ng-if="step==7">
 			<p>Galerie photos</p>
 			<div>
-				<div><input type="radio" class="radio" ng-model="photos.types" value="0" name="photo" id="input_1" ng-model="cStuff.photoType" /><label class="align_label" for="input_1">Photos seront communiquées ultérieurement, date</label></div>
+				<!-- <div><input type="radio" class="radio" ng-model="photos.types" value="0" name="photo" id="input_1" ng-model="cStuff.photoType" /><label class="align_label" for="input_1">Photos seront communiquées ultérieurement, date</label></div> -->
 				<div><input type="radio" class="radio" ng-model="photos.types" value="1" name="photo" id="input_2" ng-model="cStuff.photoType" /><label class="align_label" for="input_2">Prise de photos ce jour</label></div>
 			</div>
 			<div ng-if="photos.types==1" class="clearfix margin-top">
@@ -656,13 +656,137 @@ Jours de fermeture
 		</div>
 		<div class="form" ng-if="step==8">
 			<div>
-				<div><a class="links" href="" ng-click="conditions=!conditions">Prévisualisation des conditions générales </a></div>
-				<div ng-if="conditions" class="conditions">
-					<h2>CONDITIONS GENERALES</h2>
-					<p>La présente convention comprend les conditions particulières conclues entre RestoPass® et le Restaurateur et est indissociable des conditions générales de RestoPass® qui font intégralement partie du présent contrat sauf dans la mesure où il y est dérogé expréssement.</p>
-					<p>Le Restaurateur déclare avoir pris connaissance des conditions générales de RestoPass® qui sont, par ailleurs, disponibles à l’adresse internet suivante : www.restopass.com/conditionsgenerales</p>
-					<p>Le Restaurateur déclare accepter sans réserve les conditions générales de RestoPass® et accepte, le cas échéant, expressément d’écarter ses propres conditions générales.</p>
+				<div class="clearfix margin-top" >
+					<label class="left" style="margin-right: 20px;">Prévisualisation des conditions générales</label>
+					<!-- <a class="links" href="" ng-click="conditions=!conditions">Prévisualisation des conditions générales </a> -->
+					<button class="croped left" style="margin-right: 20px;" ng-click="conditions=!conditions" lng="FR"></button>
+					<button class="croped left" ng-click="conditionss=!conditionss" lng="NL"></button>
 				</div>
+				<div ng-if="conditions" class="conditions">
+					<pre>CONDITIONS GENERALES DE VENTE ET D’UTILISATION RESTOPASS
+ARTICLE 1 – CONTEXTE DU CONTRAT
+Restopass® commercialisera en 2015 une carte, une application mobile et un site web reprenant des informations générales sur des restaurants, répondant aux critères de sélection développés par Restopass®.
+Par ailleurs, Restopass® commercialisera les fonctionalités de la carte Restopass® en « marque blanche » ou « marque grise » sur les cartes de sociétés partenaires qui seront éventuellement associées à des sites partenaires (en marque blanche ou grise).
+L’objectif est de faire découvrir les restaurants sélectionnés aux détenteurs de la carte Restopass®» et des cartes partenaires et de leur faire bénéficier d’un certain nombre d’avantages, essentiellement sous forme de réductions reprises à l’article 4 de la présente convention.
+Le Restaurant, après avoir été sélectionné par Restopass®, souhaite faire partie des restaurants repris dans l’application et le site Restopass® ».
+ARTICLE 2 – DROITS ET OBLIGATIONS DE RESTOPASS
+2.1 Restopass® s’engage à consacrer un espace descriptif du Restaurant au sein du site et de l’application mobile Restopass®, dont le contenu sera développé d’un commun accord entre Restopass® et le Restaurant.
+2.2 Restopass® s’engage à effectuer diverses actions de marketing et communication en vue de supporter la vente des cartes Restopass®, ainsi que le téléchargement de l’application et la promotion du site web Restopass®. Ces actions peuvent inclure, notamment, des campagnes d’emailing, de bannering sur différents sites, des promotions dans la presse écrite et audiovisuelle, des promotions sur point de vente en grande distribution, etc.
+2.3 En toute hypothèse, Restopass® est et reste entièrement libre de la gestion promotionnelle et commerciale de la vente de la carte Restopass®® ainsi que de la promotion du site et de l’application mobile Restopass®, et notamment du choix des points de vente, des actions marketing à mener et de leur fréquence, des canaux de distribution, etc. Restopass® s’engage à mettre en œuvre les moyens nécessaires pour assurer la continuité et la qualité d’accès à l’Application mobile et au site Restopass®. Restopass® ne prend aucun engagement quant aux modalités de classement et/ou de référencement des établissements des Restaurateurs sur le Portail ou sur les Sites partenaires. Restopass® demeure libre de ses choix promotionnels et il ne peut en aucun cas lui être reproché un manque de visibilité d’un établissement par le Restaurateur.
+2.4 Restopass® est responsable de communiquer clairement dans le site et l’application Restopass l’ensemble des conditions de la réduction expliquée à l’Article 4 de la présente convention.
+ARTICLE 3 – DROITS ET OBLIGATIONS DU RESTAURANT
+3.1 Le Restaurateur recevra des autocollants indiquant qu’il fait partie de la sélection Restopass et  qu’il s’engage à le placer de manière à ce qu’il soit clairement visible de ses clients, notamment sur sa devanture et à proximité de l’endroit où s’effectuent les paiements.
+3.2 Le Restaurant s’engage à participer à l’élaboration du contenu de l’espace qui lui sera consacré au sein de l’application mobile Restopass® et du le site internet de Restopass® (ainsi que des applications mobiles et sites partenaires).
+Le Restaurant fournira à Restopass® un descriptif du Restaurant et plusieurs photos du Restaurant en haute résolution.
+Le Restaurateur dont l’établissement est présent sur le site Restopass® et les sites partenaires s’engage à fournir des informations sincères et exactes sur les services fournis à la clientèle et à toujours tenir à jour lesdites informations. Le Restaurateur est entièrement responsable du contenu relatif à son établissement.
+3.3 Le Restaurant autorise Restopass® à utiliser, dans l’application mobile, sur le site, newsletters, sites partenaires et pour toute campagne de communication, son nom, son descriptif, les photos communiquées, l’adresse de son site internet et le cas échéant son logo ainsi que tous les différents éléments visuels ou textuels fournis.
+Le Restaurateur autorise également Restopass® à référencer les récompenses et distinctions obtenues auprès d’organismes tiers. En particulier, le Restaurateur certifie que les contenus (tels que photographies, textes, etc.) fournies par ses soins ne portent pas préjudice aux droits des tiers et qu’il est autorisé à les reproduire et/ou les diffuser au public. Pour les images du restaurant incluant le personnel du Restaurant, le Restaurateur déclare avoir recueilli l’accord de la (les) personne(s) photographiée(s) ou filmée(s), en vue de la publication et de la diffusion des images. Le Restaurateur déclare être informé de cette contrainte et aucune réclamation sur les photographies ne pourra-t-être effectuée par le Restaurateur à ce titre. Le Restaurateur garantit dès lors Restopass® contre toutes réclamations, revendications de propriété ou toutes actions judiciaires ou extrajudiciaires relatives aux contenus et s’engage à dédommager intégralement Restopass® de ses frais et pertes qui pourraient lui être causés de ce fait.
+3.4 Le Restaurant s’engage à fournir une réduction sur l’addition finale à tout détenteur de la carte, d’un voucher ou d’un coupon électronique Restopass®, ainsi qu’à l’ensemble des personnes présentes à la table de celui-ci, aux conditions reprises à l’Article 4 de la présente convention.
+3.5 Chaque fois qu’une carte Restopass® ou une carte partenaire, un coupon ou un voucher lui sera présenté pour bénéficier de la réduction, le restaurateur en vérfifiera la  validité sur l’applicatif mis à sa disposition par Restopass®.
+Le Restaurant ne pourra refuser d’octroyer l’avantage ou la réduction décrite à l’Article 4 de la présente convention que dans les cas suivants :
+> La vérification du numéro de la carte ou du coupon électronique ou du voucher est impossible car il est illisible ou parce que l’applicatif Restopass®. est indisponible
+> Après vérification, le voucher ou le coupon électronique présente une date de validité dépassée.
+3.6 Le Restaurant s’engage à fournir la réduction susmentionnée jusqu’à la date d’expiration de la carte, du voucher ou du coupon électronique Restopass®.
+3.7 Le Restaurateur s’engage à utiliser l’Application conformément aux conditions définies dans le présent contrat. Le Restaurateur s’interdit, de reproduire, extraire, décompiler, réutiliser tout élément de l’Application, par quelque moyen que ce soit, sous quelque forme que ce soit et sur quelque support que ce soit. Le Restaurateur demeure seul responsable de l'utilisation des identifiants le concernant. En cas de perte des identifiants ou de divulgation des identifiants à des tiers non autorisés, le Restaurateur s’engage à avertir sans délais Restopass®.
+3.8 Quel que soit le montant ou la nature de la réduction ou de l’avantage effectivement accordé par le restaurateur au détenteur de la carte, le restaurateur en assume l’entière responsabilité et ne pourra exercer aucun droit de recours vis-à-vis de Restopass®, notamment en cas d’erreur.
+Le Restaurateur s’engage à respecter la vie privée des clients et les dispositions de la Loi modifiée n°78-17 dite « Informatique et Libertés » du 6 janvier 1978. En particulier, le Restaurateur s’engage à effectuer toutes les formalités nécessaires auprès de la CNIL pour traiter les données personnelles des clients et respecter en toute circonstance les droits reconnus par la Loi Informatique et Libertés aux personnes dont les données personnelles sont traitées par le Restaurateur, notamment dans le cadre de campagnes e-mail ou SMS.
+ARTICLE 4 – REDUCTION OFFERTE PAR LE RESTAURATEUR
+4.1 La réduction offerte par le Restaurant consistera en une déduction calculée en pourcentage sur l’addition finale, hors boissons. La réduction portera donc sur tous types de nourriture (entrée, plat, dessert, etc.), à la carte ou au menu à l’exception des boissons (apéritifs, vins, cafés, etc.).
+4.2 Les types de réductions offertes et leurs pourcentages associés sont repris dans les conditions particulières de la convention.
+4.3 Sauf décision contraire du restaurateur ou erreur de sa part, la réduction totale par addition ne pourra en aucun cas excéder la somme de 50€.
+4.4 Une seule carte RestoPass®  pourra être utilisée par table et par addition.
+4.5 Sauf dispositions particulières contraires reprises dans la présente convention, la réduction sera d’application le midi et le soir, durant tous les jours d’ouverture du Restaurant.
+4.6 La réduction est valable pour toute la durée de validité de la carte (après consultation par le restaurateur sur l’espace de vérification mis à sa disposition par RestoPass®).
+4.7 Le détenteur de la carte RestoPass® n’est pas dans l’obligation de mentionner le souhait d’utiliser se carte RestoPass® lors de la réservation ou préalablement au paiement de l’addition.
+
+ARTICLE 5 – PROPRIETE DES DONNEES
+Le contenu fourni par le Restaurateur ou créé par ce dernier demeure la propriété du Restaurateur et reste sous sa responsabilité exclusive. RestoPass® est en revanche responsable et propriétaire des données collectées sur son site internet, son application mobile et sur les sites partenaires. RestoPass® est également propriétaire de l’ensemble des informations relatives au classement des Restaurateurs sur le Portail et sur les Sites.
+ARTICLE 6 - EFFET – DUREE – SUSPENSION - RESILIATION
+6.1 La présente convention entrera en vigueur à la date reprise dans les conditions particulières.
+Elle est conclue pour une durée minimum d’un an.
+Sauf résiliation par l’une ou l’autre partie, elle sera tacitement reconduite chaque année à l‘échéance annuelle du contrat pour une nouvelle période d’un an.
+6.2 La résiliation devra être signifiée par lettre recommandée avec accusé de réception au plus tard 3 mois avant la date d’échéance de la période en cours.
+6.3 Nonobstant l’éventuelle résiliation, le restaurateur s’engage à fournir la réduction à tout détenteur de la carte RestoPass® jusqu’à l’échéance de la période en cours selon les conditions reprises dans l’Article 4 de la présente convention.
+6.4 En cas d’impossibilité répétée et manifeste de mettre en ligne l’espace dédié au restaurant pour non livraison des contenus, RestoPass® se réserve le droit de solliciter le paiement d’une indemnité administrative forfaitaire de 1.000 € HTVA de la part du restaurant
+6.5 En cas de rupture intempestive de la convention ou de non-respect répété et constaté des modalités convenues dans cette dernière par le Restaurateur, RestoPass® se réserve le droit de déréférencer sans préavis ni indemnité le restaurant et de solliciter le paiement d’une indemnité forfaitaire de 3.000€ HTVA de la part du restaurant.
+6.6 En cas de cession du fond de commerce par le Restaurant, celui-ci veillera à ce que le repreneur respecte les engagements de la présente convention.
+6.7 En cas de fin des activités du Restaurant, RestoPass® ne dispose d’aucun droit à un quelconque dédommagement, ni d’aucun recours contre le Restaurant.
+ARTICLE 7 – RESPONSABILITE / GARANTIE
+Le site internet, l’application mobile et de façon générale, toutes les applicatifs mis à dispositions du public, des détenteurs de la carte RestoPass® et des restaurateurs sont fournis en l’état. RestoPass® n’est en aucun cas responsable si, en cas d’indisponibilité liée (i) à des opérations de maintenance, (ii) au réseau Internet ou (iii) pour toute autre raison qui lui sont indépendantes, le Restaurateur ne peut accéder à l’Application, au site internet ou aux sites partenaires. En toute hypothèse, en cas de faute prouvée de RestoPass® à l’égard du Restaurateur, le montant des dommages-intérêts pouvant lui être réclamé sera limité au montant des rémunérations effectivement perçues par RESTOPASS au titre de la dernière année d’exécution du présent contrat avec le Restaurateur.
+Le Restaurateur s’engage à utiliser l’Application dans le respect de la législation Luxembourgeoise en vigueur, notamment en matière de droit de la consommation (prohibition de la publicité trompeuse et des pratiques commerciales déloyales ou agressives), droit des données personnelles, droit de la propriété intellectuelle, droit à l’image et droit du commerce électronique. En conséquence, le Restaurateur s’engage à garantir RestoPass® contre toute réclamation, action ou demande d’indemnisation d’un client, d’un tiers ou d’une autorité publique portant sur une information, un contenu ou un acte du Restaurateur pris en violation des stipulations du présent contrat ou des dispositions législatives en vigueur.
+ARTICLE 8 – UTILISATION DES MARQUES ET LOGOS RESTOPASS
+Toutes les marques et tous les logos appartenant à RestoPass® ne peuvent pas être utilisés par le Restaurateur sans le consentement préalable écrit de RestoPass® ou sauf dans le cadre de la dérogation suivante : RestoPass® autorise le Restaurateur à utiliser, reproduire et diffuser ses marques et/ou logos sur son propre site web ou dans son restaurant. Une telle exploitation des marques et logos par le Restaurateur devra être effectuée conformément aux instructions, lignes directrices et/ou charte d’usage des marques et logos de RestoPass®. Tous les autres droits de RestoPass® relatifs aux marques ou aux logos sont réservés.
+ARTICLE 9 – DISPOSITIONS FINALES
+9.1 La présente convention représente l’intégralité de l’accord des parties à propos de l’objet auquel elle se rapporte et contient tout ce que les parties ont négocié et convenu dans ce cadre. Elle remplace et annule tout accord, communication, offre, proposition ou correspondance, verbal ou écrit, échangé ou conclu antérieurement entre les parties et ayant trait au même objet.
+9.2 Si l’une ou plusieurs des clauses de la présente convention vient à être déclarée nulle, illégale ou inapplicable, cette nullité, illégalité ou inapplicabilité n’affectera pas la validité des autres clauses de la présente convention. En pareil cas, chacune des parties s’efforcera de négocier immédiatement et de bonne foi une clause valable en remplacement de celle-ci, ayant un effet économique similaire à la clause remplacée.
+9.3 RestoPass® ne souscrit à aucune obligation de résultat en vertu de la présente convention.
+9.4 RestoPass® ne garantit pas que le référencement du restaurant au sein de l’application mobile et des sites RestoPass® restera toujours gratuit.
+Néanmoins, si cela devait se produire, le restaurateur en sera averti et la gratuité ainsi que toutes les dispositions de la présente convention resteront d’application jusqu’à sa prochaine échéance annuelle. Le restaurateur aura également la possibilité de résilier la convention sans frais pour la période à partir de laquelle le référencement payant entrerait en vigueur.
+9.5 Il est expressément convenu entre les parties que, les données conservées sur support électronique dans le système informatique de RestoPass® ont force probante entre les parties. Dans l'hypothèse où elles seraient produites dans toute procédure contentieuse ou autre, elles seront considérées recevables, valables et opposables entre les parties et de la même manière, dans les mêmes conditions et avec la même force probante que tout document qui serait établi, reçu ou conservé par écrit, sauf erreur manifeste de RestoPass®. Les parties demeurent des professionnels indépendants et ne sont liées qu’au titre et dans les conditions du présent contrat. Les stipulations du présent contrat ne peuvent nullement être interprétées comme créant une quelconque société entre les parties, ni un quelconque mandat, ni une quelconque subordination, ni une quelconque solidarité.
+9.6 La présente convention est régie par le droit Luxembourgeois. Toute contestation relative à la validité, à l’interprétation ou à l’exécution de la présente convention sera exclusivement soumise aux Cours et Tribunaux de Luxembourg ou de la ville retenue de commun accord par les 2 parties. Les parties veilleront toutefois au préalable à développer leurs meilleurs efforts pour régler leur différend amiablement et éventuellement lancer une procédure de médiation.
+</pre>
+				</div>
+				<div ng-if="conditionss" class="conditions">
+					<pre>ALGEMENE VOORWAARDEN VOOR VERKOOP EN GEBRUIK VAN DE RESTOPASS
+ARTIKEL 1 – CONTEXT VAN HET CONTRACT
+RestoPass® commercialiseert in 2015 een kaart, een mobiele applicatie en een website met algemene informatie over Restaurants die beantwoorden aan de criteria die RestoPass® heeft ontwikkeld.
+RestoPass® zal overigens de functionaliteiten van de kaart RestoPass® als “wit merk” of “grijs merk” commercialiseren op de kaarten van de partnerfirma’s die eventueel verbonden zijn aan partnersites (als wit of grijs merk).
+Het doel is om aan de houders van de kaart RestoPass® en de partnerkaarten toe te laten de gekozen Restaurants te ontdekken en hen te laten genieten van een aantal voordelen, vooral in de vorm van de prijsreducties hernomen in artikel 4 van deze overeenkomst.
+Het Restaurant dat, nadat het door RestoPass® is uitgekozen, deel wil uitmaken van de Restaurants in de mobiele applicatie en de website RestoPass® .
+
+ARTIKEL 2 – RECHTEN EN VERPLICHTINGEN VAN RESTOPASS
+2.1 Restopass® verbindt er zich toe om een beschrijving van het Restaurant op de site de mobiele applicatie Restopass® te plaatsen. De inhoud wordt in gemeen overleg tussen Restopass® en het Restaurant ontwikkeld.
+2.2 Restopass® verbindt er zich toe om verschillende marketing- en communicatieacties te voeren om de verkoop van de Restopass® kaarten en het downloaden van de applicatie en de promotie van de website Restopass® te steunen. Deze acties kunnen, onder meer, mailcampagnes, banners op verschillende sites, reclame in de geschreven en audiovisuele pers, promotie in de verkooppunten in grootwarenhuizen, etc. omvatten.
+2.3 In elk geval zal Restopass® volledig vrij blijven voor het promotionele en commerciële beheer van de verkoop van de Restopass® kaarten van de promotie voor de website en de mobiele applicatie Restopass®, met name wat de keuze van de verkooppunten, de marketingacties en hun frequentie, de distributiekanalen, etc. betreft. Restopass® verbindt er zich toe om de nodige middelen in te zetten om de continuïteit en de kwaliteit van de toegang tot de mobiele applicatie en de website van Restopass® te garanderen. Restopass® verbindt zich niet wat betreft de modaliteiten voor de klassering of de verwijzing naar de Restaurants op de portaalsite of de partnersites. Restopass® blijft vrij in zijn promotiekeuzes en men kan het in geen geval een gebrek aan zichtbaarheid van zijn zaak worden verweten door een Restaurateur.
+2.4 Restopass® is verantwoordelijk voor het duidelijk meedelen op de site en de applicatie Restopass van het geheeld van de voorwaarden voor de reductie uiteengezet in Artikel 4 van onderhavige overeenkomst.
+ARTIKEL 3 – RECHTEN EN VERPLICHTINGEN VAN HET RESTAURANT
+3.1 De Restaurateur zal zelfklevers ontvangen die aanduiden dat hij deel uitmaakt va het selectie van Restopass. Hij verbindt er zich toe deze zo aan te brengen dat hij duidelijk zichtbaar is voor de klanten, met name aan de voorgevel en op de plaats waar de betalingen worden gedaan.
+3.2 Het Restaurant verbindt er zich toe om mee te werken aan de inhoud van het stuk dat wordt voorbehouden in de mobiele applicatie Restopass® en de internetsite van Restopass® (alsook op de mobiele applicaties van de partnersites).
+het Restaurant levert aan Restopass® een beschrijving van het Restaurant en meerdere foto’s van het Restaurant in hoge resolutie.
+De Restaurateur waarvan de zaak op de site Restopass® en de partnersites staat, verbindt er zich toe om eerlijke en correcte informatie te geven over de geleverde diensten en om deze informatie te allen tijde bij te werken. De Restaurateur is volledig verantwoordelijk voor de inhoud met betrekking tot zijn zaak.
+3.3 Het Restaurant geeft aan Restopass® de toestemming om zijn naam, de beschrijving, de meegedeelde foto’s, het adres van zijn internetsite en, in voorkomend geval, zijn logo en alle andere geleverde tekstuele of visuele elementen te gebruiken.
+De Restaurateur geeft aan Restopass® ook de toestemming om de van andere organismen verkregen prijzen en vermeldingen te vermelden. De Restaurateur garandeert in het bijzonder dat de inhoud die hij heeft verstrekt (zoals foto’s en teksten) geen inbreuk inhouden op de rechten van derden en dat hij de toestemming heeft om deze te reproduceren en/of openbaar te verspreiden. Voor de foto’s van het Restaurant waar het personeel herkenbaar is afgebeeld verklaart hij van de gefotografeerde of gefilmde personen de toestemming te hebben om hun beeld te publiceren en te verspreiden. De Restaurateur verklaart van deze verplichting geïnformeerd te zijn. Hij kan op deze beelden geen enkel recht doen gelden. De Restaurateur vrijwaart daardoor Restopass® van enige klacht, opeisen van eigendomsrechten of enige gerechtelijke of buitengerechtelijke eis met betrekking tot de inhoud en hij verbindt er zich toe om Restopass® integraal schadeloos te stellen voor de kosten en verliezen die daardoor zouden kunnen zijn ontstaan.
+3.4 Het Restaurant verbindt er zich toe om aan elke houder van de kaart, van een voucher of een elektronisch ticket van Restopass® een reductie toe te staan op de totale rekening, alsook aan alle personen die aan dezelfde tafel zaten, onder de voorwaarden hernomen in Artikel 4 van onderhavige overeenkomst.
+3.5 Telkens hem een Restopass® kaart of een partnerkaart, een bonnetje of een voucher wordt voorgelegd om van een reductie te genieten, controleert hij de geldigheid op het toestel dat hem door Restopass® ter beschikking is gesteld. Het Restaurant kan het toekennen van de reductie omschreven in Artikel 4 van onderhavige overeenkomst enkel in de volgende gevallen weigeren:
+> als de controle van het nummer van de kaart of van de elektronische coupon of van de voucher onmogelijk is omdat deze onleesbaar is of omdat het toestel van Restopass® onbeschikbaar is
+> als na controle blijkt dat de elektronische coupon of de voucher worden aangeboden na de vervaldatum.
+3.6 Het Restaurant verbindt er zich toe om de bovenvermelde reductie toe te kennen tot op de vervaldag van de kaart, van de voucher of van de elektronische coupon van Restopass®.
+3.7 De Restaurateur verbindt er zich toe om de applicatie te gebruiken conform de voorwaarden bepaald in onderhavige overeenkomst. De Restaurateur zal geen enkel element van de applicatie reproduceren, extraheren, decompileren of gebruiken, op welke wijze dan ook, onder welke vorm dan ook en op welke drager dan ook. De Restaurateur blijft alleen verantwoordelijk voor het gebruik van de herkenningstekens die hem betreffen. In geval van verlies van de herkenningstekens of het doorgeven ervan aan niet-geautoriseerde derden verbindt de Restaurateur er zich toe om dit onverwijld aan Restopass® te melden.
+3.8 Onafhankelijk van de aard van de reductie of het effectief door de Restaurateur aan de houder van de kaart toegekende voordeel, blijft de Restaurateur volledig verantwoordelijk en kan hij in geen geval bijvoorbeeld een vergissing verhalen op Restopass®.
+De Restaurateur verbindt er zich toe om de privacy van de klanten en de bepalingen van de gewijzigde Franse wet Nr. 78-17 inzake “informatica en vrijheden” van 6 januari 1978 te eerbiedigen. De Restaurateur verbindt er zich in het bijzonder toe om alle nodige formaliteiten bij de CNIL (Frans agentschap voor gegevensbescherming) om de persoonlijke gegevens van de klanten te behandelen en in elk geval de rechten voorzien in de wet inzake informatica, bestanden en vrijheden van de personen waarvan de persoonlijke gegevens worden behandeld door de Restaurateur, met name in het kader van e-mail of SMS-campagnes.
+ARTIKEL 4 – REDUCTIE AANGEBODEN DOOR DE RESTAURATEUR
+4.1 De reductie aangeboden door het Restaurant bestaat in een aftrek berekend als percentage op de eindrekening, zonder drank. De reductie geldt dus voor alle etenswaren (voorgerecht, hoofdschotel, dessert, etc.), à la carte of op menu met uitzondering van de dranken (aperitieven, wijn, koffie, etc.).
+4.2 De types van aangeboden reductie en de daarmee verbonden percentages worden hernomen in de bijzondere voorwaarden van de overeenkomst.
+4.3 Zonder andersluidende beslissing van de Restaurateur of vergissing van zijnentwege kan de totale reductie per rekening in geen geval de som van 50 € overschrijden.
+4.4 Er kan per tafel en per rekening maar één enkele RestoPass® kaart worden gebruikt.
+4.5 Behoudens andersluidende bepalingen in de onderhavige overeenkomst, zal de reductie ’s middags en ’s avonds gelden, op alle openingsdagen van het Restaurant.
+4.6 De reductie geldt gedurende de gehele geldigheidsduur van de kaart (na controle door de Restaurateur op de controlesite ter beschikking gesteld door RestoPass®).
+4.7 De houder van de RestoPass® kaart is bij de reservatie of voorafgaand aan het betalen van de rekening niet verplicht te vermelden dat hij de RestoPass® kaart wil gebruiken.
+
+ARTIKEL 5 – EIGENDOM VAN DE GEGEVENS
+De inhoud geleverd door de Restaurateur of door hem gecreëerd, blijft eigendom en exclusieve verantwoordelijkheid van de Restaurateur. RestoPass® is daarentegen verantwoordelijk en eigenaar van de verzamelde gegevens op zijn website, zijn mobiele applicatie en op de partnersites. RestoPass® is tevens eigenaar van alle informatie met betrekking tot de klassering van de Restaurateurs op het portaal en op de websites.
+ARTIKEL 6 - EFFECT – DUUR – OPSCHORTING - OPZEG
+6.1 De onderhavige overeenkomst treedt in werking op de datum vermeld in de bijzondere voorwaarden. Ze wordt afgesloten voor de duur van tenminste één jaar. Behoudens opzeg door één van de partijen wordt ze elk jaar stilzwijgend verlengd op de jaarlijkse vervaldag van de overeenkomst voor de duur van één jaar.
+6.2 De opzeg moet per aangetekende brief met ontvangstbevestiging, ten laatste drie maanden voor de vervaldag van de lopende periode, worden betekend.
+6.3 Niettegenstaande de eventuele opzeg verbindt de Restaurateur er zich toe om aan iedere houder van een RestoPass® kaart tot aan het einde van de lopende periode de reductie toe te kennen onder de voorwaarden vermeld in Artikel 4 van de onderhavige overeenkomst.
+6.4 In het geval van herhaalde en manifeste onmogelijkheid om de ruimte voorzien voor het Restaurant online te zetten, behoudt RestoPass® zich het recht voor om een forfaitaire schadevergoeding van 1.000 € zonder BTW te eisen van het Restaurant.
+6.5 In het geval van een onverhoeds verbreken van de overeenkomst of de herhaalde en vastgestelde schending van de overeengekomen modaliteiten in deze door de Restaurateur, behoudt RestoPass® zich het recht voor om het Restaurant zonder verwittiging of vergoedeng te schrappen en om een forfaitaire schadevergoeding van 3.000 € zonder BTW te eisen van het Restaurant.
+6.6 In het geval het handelsfonds van het Restaurant wordt stopgezet zal de Restaurateur erover waken dat de overnemer de verbintenissen van onderhavige overeenkomst respecteert.
+6.7 In het geval het Restaurant definitief sluit beschikt RestoPass® over geen recht op welke schadevergoeding dan ook, noch over enig verhaal tegen het Restaurant.
+ARTIKEL 7 – VERANTWOORDELIJKHEID / GARANTIE
+De website, de mobiele applicatie en in het algemeen alle toepassingen ter beschikking van het publiek, de houders van de RestoPass® kaart en de Restaurateurs worden als dusdanig geleverd. RestoPass® is in geen geval verantwoordelijk indien, in het geval van onbeschikbaarheid door (i) onderhoudswerken, (ii) de verbindingen met het Internet of (iii) enige andere reden onafhankelijk van zijn wil, de Restaurateur geen toegang heeft tot de Applicatie, de website of de partnersites. In elke hypothese zal, bij bewezen fout vanwege RestoPass® ten opzicht van de Restaurateur, het bedrag van de schadevergoeding dat kan worden gevorderd begrensd zijn tot de vergoedingen die RESTOPASS effectief heeft ontvangen gedurende het laatste jaar van uitvoering van onderhavige overeenkomst met de Restaurateur.
+De Restaurateur verbindt er zich toe om de applicatie te gebruiken met eerbiediging van de geldende Luxemburgse wetgeving, met name met betrekking tot het verbruikersrecht (verbod op bedrieglijke reclame en deloyale of agressieve handelspraktijken), het recht op de persoonlijke gegevens, het recht op de intellectuele eigendom, het recht op de afbeelding en het recht inzake elektronische handel. Bijgevolg verbindt de Restaurateur er zich toe om RestoPass® te vrijwaren van enige klacht, eis tot schadevergoeding vanwege een klant, een derde of een overheid met betrekking tot informatie, inhoud of daad vanwege de Restaurateur die een inbreuk uitmaakt tegen de bepalingen van onderhavige overeenkomst of tegen de geldende wettelijke bepalingen.
+ARTIKEL 8 – GEBRUIK VAN DE MERKEN EN LOGO’S VAN RESTOPASS
+Alle merken en logo’s toebehorend aan RestoPass® mogen enkel door de Restaurateur worden gebruikt met voorafgaande schriftelijke toestemming van RestoPass® of in het kader van volgende uitzondering: RestoPass® geeft aan de Restaurateur toestemming om de merken en/of logo’s te gebruiken, te reproduceren en te verspreiden op zijn eigen website of in zijn eigen Restaurant. Een dergelijk gebruik van de merken en logo’s door de Restaurateur moet gebeuren volgens de instructies, richtlijnen en/of het gebruikscharter van de merken en logo’s van RestoPass®. Alle andere rechten van RestoPass® met betrekking tot de merken en logo’s zijn voorbehouden.
+ARTIKEL 9 – SLOTBEPALINGEN
+9.1 De onderhavige overeenkomst geeft het geheel van de overeenkomst tussen de partijen weer wat betreft het onderwerp waarover ze handelt en bevat alles wat de partijen in dit kader hebben onderhandeld. Ze vervangt en annuleert enig akkoord, bericht, aanbod of correspondentie, mondeling of schriftelijk, vroeger tussen de partijen uitgewisseld of afgesloten met hetzelfde onderwerp.
+9.2 Indien één of meerdere van de clausules van onderhavige overeenkomst nietig, onwettig of ontoepasbaar zou worden verklaard, dan zal deze nietigheid, onwettigheid of ontoepasbaarheid de geldigheid van de andere clausules van onderhavige overeenkomst niet in het gedrang brengen. In dat geval zullen de partijen zich inspannen om onmiddellijk en te goeder trouw te onderhandelen om deze te vervangen door een clausule met een gelijkaardige economische draagwijdte.
+9.3 RestoPass® aanvaardt geen verplichting tot resultaat als gevolg van de onderhavige overeenkomst.
+9.4 RestoPass® garandeert niet dat de vermelding van het Restaurant in de mobiele applicatie en op de websites van RestoPass® steeds gratis zal blijven.
+De Restaurateur zal er nochtans, mocht dit zich voordoen, van worden verwittigd en het feit dat het gratis is zal, net als alle andere bepalingen van onderhavige overeenkomst, geldig blijven tot aan de volgende jaarlijks vervaldag. De Restaurateur zal tevens de mogelijkheid hebben om de overeenkomst zonder kosten op te zeggen voor de periode vanaf dewelke de vermelding betalend wordt.
+9.5 De partijen komen uitdrukkelijk overeen dat de gegevens die op elektronische drager worden bewaard in het informaticasysteem van RestoPass® bewijskracht hebben tussen de partijen. In de veronderstelling dat ze zouden worden gebruikt in enig geschil of anders, worden ze als ontvankelijk, geldig en tegenstelbaar beschouwd tussen de partijen en op dezelfde wijze, onder dezelfde voorwaarden en met dezelfde bewijskracht als enig document dat schriftelijk zou worden opgesteld, ontvangen of bewaard, behoudens manifeste vergissing vanwege RestoPass®. De partijen blijven professionele zelfstandigen die enkel ten titel van de voorwaarden van onderhavige overeenkomst zijn gebonden. De bepalingen van onderhavige overeenkomst kunnen in geen geval worden geïnterpreteerd als het oprichten van enige onderneming tussen de partijen, noch van enig mandaat, noch enige ondergeschiktheid, noch enige solidariteit.
+9.6 De onderhavige overeenkomst valt onder Luxemburgs recht. Elke betwisting over de geldigheid, de interpretatie of de uitvoering van de onderhavige overeenkomst wordt uitsluitend voorgelegd aan de Hoven en Rechtbanken van Luxemburg of van de stad die wordt overeengekomen door de 2 partijen. De partijen waken erover om voordien hun uiterste best te doen om hun geschil in der minne te regelen en eventueel een verzoeningsprocedure op te starten.
+</pre></div>
 				<div class="signature">
 					<div style="width:730px; height:410px;">
 						<canvas id="signature" height="404" width="724" ></canvas>
@@ -690,6 +814,12 @@ Jours de fermeture
 					<div><label>To:</label><input type="text" ng-model="sendEmail.email"></div>
 					<div><label>Subject:</label><input type="text" ng-model="sendEmail.subject"></div>
 					<label>Body:</label><textarea ng-model="sendEmail.emailBody" class="textareaE" rows="8"></textarea>
+					<div><label>PDF language:</label>
+						<select ng-model="sendEmail.lng">
+							<option value="0">FR</option>
+							<option value="1">NL</option>
+						</select>
+					</div>
 					<div class="clearfix sendEmailBtns">
 						<button class="croped" ng-click="closeEmail()" lng="Close"></button>
 						<button class="croped" ng-click="SendEmail()" lng="Send"></button>

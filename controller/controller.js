@@ -134,7 +134,8 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
   $scope.sendEmail = { show : false };
   $scope.openeds = false;
   $scope.pick_date_format = 'dd/MM/yyyy';
-  $scope.hours=[]
+  $scope.hours=[];
+  $scope.sendEmail.lng = 0;
 
   for (var i = 7; i < 24; i++) {
     var text = i;
@@ -327,6 +328,7 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
                    'subject' : $scope.sendEmail.subject,
                    'body' : $scope.sendEmail.emailBody,
                    'c_id' : $scope.c_id,
+                   'lng' : $scope.sendEmail.lng,
                    'do' : 'restopass--restopass-sendMail' }
       if( $scope.c_id != 0 ){
         data.c_id = $scope.c_id;
