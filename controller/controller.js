@@ -114,7 +114,7 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
 }]).controller('add', ['$scope','$http','$timeout','project','$modal','$rootScope','camera','$location','$routeParams','notification', function ($scope,$http,$timeout,project,$modal,$rootScope,camera,$location,$routeParams,notification){
   $scope.c_id = isNaN($routeParams.id) === false ? $routeParams.id : 0;
   var getparams = {'do' : 'restopass-order',c_id:$scope.c_id};
-  $scope.step=1;
+  $scope.step=7;
   $scope.cStuff = { comp_start : false, c_start : false,
     orar : { luni: { from: '', to: '',from2: '', to2: ''},
            marti: { from: '', to: '',from2: '', to2: ''},
@@ -405,6 +405,25 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
       project.stopLoading();
     },function(){project.stopLoading();});
   }
+
+
+  $scope.sendDb = function(i){
+    client.authenticate(auth_callback);
+  }
+
+$scope.sendDb2 = function(){
+  var data = $scope.image[0].img.split(',')[1];
+  var blob = b64toBlob(data, 'image/jpeg');
+  console.log(blob);
+  client.writeFile("apps/restopass/hello_world.jpg", blob, function(error, stat) {
+    if (error) {
+      return showError(error);  // Something went wrong.
+    }
+
+    alert("File saved as revision " + stat.versionTag);
+  });
+}
+
   if($scope.c_id != 0 ){
     $timeout( function(){ $scope.doIt('get',getparams,function(r){
         $scope.cStuff = r.data.customer;
