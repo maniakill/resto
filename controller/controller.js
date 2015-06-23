@@ -114,7 +114,7 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
 }]).controller('add', ['$scope','$http','$timeout','project','$modal','$rootScope','camera','$location','$routeParams','notification', function ($scope,$http,$timeout,project,$modal,$rootScope,camera,$location,$routeParams,notification){
   $scope.c_id = isNaN($routeParams.id) === false ? $routeParams.id : 0;
   var getparams = {'do' : 'restopass-order',c_id:$scope.c_id};
-  $scope.step=7;
+  $scope.step=1;
   $scope.cStuff = { comp_start : false, c_start : false,
     orar : { luni: { from: '', to: '',from2: '', to2: ''},
            marti: { from: '', to: '',from2: '', to2: ''},
