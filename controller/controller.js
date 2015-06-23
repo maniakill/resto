@@ -151,7 +151,7 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
   $scope.status = {
     isopen: false
   };
-
+  $scope.closeAlert=function(index){$scope.alerts.splice(index,1);}
   $scope.toggleDropdown = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
@@ -406,23 +406,50 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
     },function(){project.stopLoading();});
   }
 
-
-  $scope.sendDb = function(i){
-    client.authenticate(auth_callback);
+  $scope.auth_callback = function() {
+    if (client.isAuthenticated()) { $scope.sendDb2(0); }
+    else { console.log('ee'); project.stopLoading(); }
   }
 
-$scope.sendDb2 = function(){
-  var data = $scope.image[0].img.split(',')[1];
-  var blob = b64toBlob(data, 'image/jpeg');
-  console.log(blob);
-  client.writeFile("apps/restopass/hello_world.jpg", blob, function(error, stat) {
-    if (error) {
-      return showError(error);  // Something went wrong.
-    }
+  $scope.sendDb = function(i){
+    console.log('sendDb');
+    project.loading();
+    client.authenticate($scope.auth_callback);
+  }
 
-    alert("File saved as revision " + stat.versionTag);
-  });
-}
+  $scope.sendDb2 = function(i){
+    console.log('sendDb2');
+    if(i >= $scope.image.length){
+      // $scope.alerts=[{type:'success',msg:'Files saved'}];
+      project.stopLoading();
+      return false;
+    }
+      if($scope.image[i].saved){
+        return $scope.sendDb2(i+1);
+      }
+      var data = $scope.image[i].img.split(',')[1];
+      var blob = b64toBlob(data, 'image/jpeg');
+      var timeInMs = Date.now();
+      client.writeFile("apps/restopass/img_"+timeInMs+".jpg", blob, function(error, stat) {
+        console.log(stat);
+        if (error) {
+          if(error.response == null){
+            project.stopLoading();
+            return client.signOut($scope.sendDb);
+          }else{
+            console.log(error);
+            project.stopLoading();
+            alert(error.responseText);
+            return false;
+          }
+        }
+        $scope.$apply(function () {
+          console.log('File saved '+i);
+          $scope.image[i].saved = stat.path;
+        });
+        return $scope.sendDb2(i+1);
+      });
+  }
 
   if($scope.c_id != 0 ){
     $timeout( function(){ $scope.doIt('get',getparams,function(r){

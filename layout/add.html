@@ -4,6 +4,7 @@
 	<div class="menu"><span class="title" lng="Contracts"></span><span class="left snap" ng-click="snap()"></span></div>
 	<div class="loading"><div class="trans"></div><div class="tree"></div><img src="images/loading.gif" id="loading" /></div>
 	<div class="loaded scrolling_stuff add-page">
+		<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 		<div class="form" ng-if="step==1">
 			<div ng-if="c_id==0">
 				<input type="radio" ng-model="client.types" ng-change="myVar.types=''" value="0" id="new_0" class="radio"/><label for="new_0" class="align_label" ng-class="myVar.types" >Client encodé</label>
@@ -649,8 +650,10 @@ Jours de fermeture
 					</li>
 				</ul>
 			</div>
-			<a href="" ng-click="sendDb()">Send to dropbox</a>
-			<a href="" ng-click="sendDb2()">Send to file</a>
+			<div class="clearfix margin-top">
+				<button ng-click="sendDb()">Upload images to dropbox</button>
+			</div>
+			<!-- <a href="" ng-click="sendDb2()">Send to file</a> -->
 			<div class="clearfix margin-top">
 				<button class="croped left" ng-click="go_to(6)" lng="Page précédente"></button>
 				<button class="croped right" ng-click="go_to(8)" lng="Page suivante"></button>

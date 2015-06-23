@@ -2,11 +2,11 @@ var DROPBOX_APP_KEY = '9hesophhsk325w1';
 var client = new Dropbox.Client({key: DROPBOX_APP_KEY});
 client.authDriver(new Dropbox.AuthDriver.Cordova());
 
-function auth_callback() {
-  console.log('e');
-    if (client.isAuthenticated()) { console.log('ll'); }
-    else { console.log('ee'); }
-}
+// function auth_callback() {
+//   console.log('e');
+//     if (client.isAuthenticated()) { console.log('ll'); }
+//     else { console.log('ee'); }
+// }
 
 function b64toBlob(b64Data, contentType, sliceSize) {
     contentType = contentType || '';
