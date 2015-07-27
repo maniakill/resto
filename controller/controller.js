@@ -361,7 +361,7 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
       var p = $.param(data);
        project.doGet('post',p).then(function(r) {
         if(r.data.code == 'ok'){
-          console.log(r);
+          // console.log(r);
           $scope.c_id = r.data.response;
           // $location.path('/contracts');
         }else{
@@ -408,17 +408,17 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
 
   $scope.auth_callback = function() {
     if (client.isAuthenticated()) { $scope.sendDb2(0); }
-    else { console.log('ee'); project.stopLoading(); }
+    else { project.stopLoading(); }
   }
 
   $scope.sendDb = function(i){
-    console.log('sendDb');
+    // console.log('sendDb');
     project.loading();
     client.authenticate($scope.auth_callback);
   }
 
   $scope.sendDb2 = function(i){
-    console.log('sendDb2');
+    // console.log('sendDb2');
     if(i >= $scope.image.length){
       // $scope.alerts=[{type:'success',msg:'Files saved'}];
       project.stopLoading();
@@ -431,20 +431,20 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
       var blob = b64toBlob(data, 'image/jpeg');
       var timeInMs = Date.now();
       client.writeFile("apps/restopass/img_"+timeInMs+".jpg", blob, function(error, stat) {
-        console.log(stat);
+        // console.log(stat);
         if (error) {
           if(error.response == null){
             project.stopLoading();
             return client.signOut($scope.sendDb);
           }else{
-            console.log(error);
+            // console.log(error);
             project.stopLoading();
             alert(error.responseText);
             return false;
           }
         }
         $scope.$apply(function () {
-          console.log('File saved '+i);
+          // console.log('File saved '+i);
           $scope.image[i].saved = stat.path;
         });
         return $scope.sendDb2(i+1);
