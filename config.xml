@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
     id="eu.salesassist.restopass"
-    version="0.1"
-    versionCode = "0.0"
+    version="0.2"
+    versionCode = "0.2"
     xmlns="http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     xmlns:android   = "http://schemas.android.com/apk/res/android"
@@ -40,7 +40,7 @@
     <gap:splash src="res2/screen/android/android-xhdpi.png" gap:platform="android" gap:density="xxhdpi" />
 
     <gap:config-file platform="ios" parent="CFBundleVersion">
-        <string>1</string>
+        <string>2</string>
     </gap:config-file>
     <gap:platform name="ios" />
     <description>
