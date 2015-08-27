@@ -442,3 +442,4 @@ button.close { -webkit-appearance: none; padding: 0; cursor: pointer; background
   /*background: url('../images/arrow_right_bx.png') no-repeat 3px 2px #5c97b7;*/
 }
 .indented{ padding-left: 40px;  }
+.saveToLine{ display: inline-block; background: url('../images/copy.png') no-repeat 6px 6px; width: 42px; height: 42px; }

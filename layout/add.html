@@ -131,7 +131,7 @@ Jours de fermeture
 					<tr>
 						<td class="th">
 							<p>Lundi</p>
-							<div><label for="input_1" style="width:50px;">Fermé</label><input type="checkbox" id="input_1" ng-model="cStuff.orar.luni.closed" style="vertical-align: middle; box-shadow:none;"></div>
+							<div><label for="input_1" style="width:50px;">Fermé</label><input type="checkbox" id="input_1" ng-model="cStuff.orar.luni.closed" style="vertical-align: middle; box-shadow:none;" ng-click="closeDay('luni')" ></div>
 						</td>
 						<td>
 							<div>
@@ -180,6 +180,7 @@ Jours de fermeture
 							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.luni.to2 = hour">{{hour}}</a></li>
 							      </ul>
 							    </div>
+							    <div><span class="saveToLine" ng-click="copyFromTop('luni')"></span></div>
 								<input type="hidden" ng-model="cStuff.orar.luni.to2"/>
 							</div>
 						</td>
@@ -187,7 +188,7 @@ Jours de fermeture
 					<tr>
 						<td class="th">
 							<p>Mardi</p>
-							<div><label for="input_2" style="width:50px">Fermé</label><input type="checkbox" id="input_2" ng-model="cStuff.orar.marti.closed" style="vertical-align: middle; box-shadow:none;"></div>
+							<div><label for="input_2" style="width:50px">Fermé</label><input type="checkbox" id="input_2" ng-model="cStuff.orar.marti.closed" style="vertical-align: middle; box-shadow:none;" ng-click="closeDay('marti')"></div>
 						</td>
 						<td>
 							<div>
@@ -236,6 +237,7 @@ Jours de fermeture
 							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.marti.to2 = hour">{{hour}}</a></li>
 							      </ul>
 							    </div>
+							    <div><span class="saveToLine" ng-click="copyFromTop('marti')"></span></div>
 								<input type="hidden" ng-model="cStuff.orar.marti.to2"/>
 							</div>
 						</td>
@@ -243,7 +245,7 @@ Jours de fermeture
 					<tr>
 						<td class="th">
 							<p>Mercredi</p>
-							<div><label for="input_3" style="width:50px;">Fermé</label><input type="checkbox" id="input_3" ng-model="cStuff.orar.miercuri.closed" style="vertical-align: middle; box-shadow:none;"></div>
+							<div><label for="input_3" style="width:50px;">Fermé</label><input type="checkbox" id="input_3" ng-model="cStuff.orar.miercuri.closed" style="vertical-align: middle; box-shadow:none;" ng-click="closeDay('miercuri')"></div>
 						</td>
 						<td>
 							<div>
@@ -292,6 +294,7 @@ Jours de fermeture
 							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.miercuri.to2 = hour">{{hour}}</a></li>
 							      </ul>
 							    </div>
+							    <div><span class="saveToLine" ng-click="copyFromTop('miercuri')"></span></div>
 								<input type="hidden" ng-model="cStuff.orar.miercuri.to2"/>
 							</div>
 						</td>
@@ -299,7 +302,7 @@ Jours de fermeture
 					<tr>
 						<td class="th">
 							<p>Jeudi</p>
-							<div><label for="input_4" style="width:50px;">Fermé</label><input type="checkbox" id="input_4" ng-model="cStuff.orar.joi.closed" style="vertical-align: middle; box-shadow:none;"></div>
+							<div><label for="input_4" style="width:50px;">Fermé</label><input type="checkbox" id="input_4" ng-model="cStuff.orar.joi.closed" style="vertical-align: middle; box-shadow:none;" ng-click="closeDay('joi')"></div>
 						</td>
 						<td>
 							<div>
@@ -348,6 +351,7 @@ Jours de fermeture
 							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.joi.to2 = hour">{{hour}}</a></li>
 							      </ul>
 							    </div>
+							    <div><span class="saveToLine" ng-click="copyFromTop('joi')"></span></div>
 								<input type="hidden" ng-model="cStuff.orar.joi.to2"/>
 							</div>
 						</td>
@@ -355,7 +359,7 @@ Jours de fermeture
 					<tr>
 						<td class="th">
 							<p>Vendredi</p>
-							<div><label for="input_5" style="width:50px;">Fermé</label><input type="checkbox" id="input_5" ng-model="cStuff.orar.vineri.closed" style="vertical-align: middle; box-shadow:none;"></div>
+							<div><label for="input_5" style="width:50px;">Fermé</label><input type="checkbox" id="input_5" ng-model="cStuff.orar.vineri.closed" style="vertical-align: middle; box-shadow:none;" ng-click="closeDay('vineri')"></div>
 						</td>
 						<td>
 							<div>
@@ -404,6 +408,7 @@ Jours de fermeture
 							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.vineri.to2 = hour">{{hour}}</a></li>
 							      </ul>
 							    </div>
+							    <div><span class="saveToLine" ng-click="copyFromTop('vineri')"></span></div>
 								<input type="hidden" ng-model="cStuff.orar.vineri.to2"/>
 							</div>
 						</td>
@@ -411,7 +416,7 @@ Jours de fermeture
 					<tr>
 						<td class="th">
 							<p>Samedi</p>
-							<div><label for="input_6" style="width:50px;">Fermé</label><input type="checkbox" id="input_6" ng-model="cStuff.orar.sambata.closed" style="vertical-align: middle; box-shadow:none;"></div>
+							<div><label for="input_6" style="width:50px;">Fermé</label><input type="checkbox" id="input_6" ng-model="cStuff.orar.sambata.closed" style="vertical-align: middle; box-shadow:none;" ng-click="closeDay('sambata')"></div>
 						</td>
 						<td>
 							<div>
@@ -460,6 +465,7 @@ Jours de fermeture
 							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.sambata.to2 = hour">{{hour}}</a></li>
 							      </ul>
 							    </div>
+							    <div><span class="saveToLine" ng-click="copyFromTop('sambata')"></span></div>
 								<input type="hidden" ng-model="cStuff.orar.sambata.to2"/>
 							</div>
 						</td>
@@ -467,7 +473,7 @@ Jours de fermeture
 					<tr>
 						<td class="last th">
 							<p>Dimanche</p>
-							<div><label for="input_7" style="width:50px;">Fermé</label><input type="checkbox" id="input_7" ng-model="cStuff.orar.duminica.closed" style="vertical-align: middle; box-shadow:none;"></div>
+							<div><label for="input_7" style="width:50px;">Fermé</label><input type="checkbox" id="input_7" ng-model="cStuff.orar.duminica.closed" style="vertical-align: middle; box-shadow:none;" ng-click="closeDay('duminica')"></div>
 						</td>
 						<td class="last">
 							<div>
@@ -516,6 +522,7 @@ Jours de fermeture
 							        <li ng-repeat="hour in hours" ><a href="" ng-click="cStuff.orar.duminica.to2 = hour">{{hour}}</a></li>
 							      </ul>
 							    </div>
+							    <div><span class="saveToLine" ng-click="copyFromTop('duminica')"></span></div>
 								<input type="hidden" ng-model="cStuff.orar.duminica.to2"/>
 							</div>
 						</td>
@@ -798,19 +805,7 @@ De Restaurateur zal er nochtans, mocht dit zich voordoen, van worden verwittigd 
 					</div>
 					<button class="croped" ng-click="clear()" lng="Clear"></button>
 				</div>
-				<div class="clearfix margin-top" ng-if="c_id">
-					<label class="left" style="margin-right: 20px;">Prévisualisation du contrat en PDF </label>
-					<!-- <div > -->
-						<button class="croped left" style="margin-right: 20px;" ng-click="showPdf()" lng="FR"></button>
-						<button class="croped left" ng-click="showPdf(1)" lng="NL"></button>
-					<!-- </div> -->
-				</div>
-				<div ng-if="pdfs" class="conditions">
-					<div ng-include="'layout/pdf.html'" ></div>
-				</div>
-				<div ng-if="pdfsn" class="conditions">
-					<div ng-include="'layout/pdf.html'" ></div>
-				</div>
+
 				<div class="clearfix margin-top" ng-if="c_id">
 					<button class="croped left" ng-click="sendEmail.show=!sendEmail.show" lng="Envoi par mail"></button>
 					<!-- <a class="links" href="" ng-click="sendEmail.show=!sendEmail.show">Envoi par mail  </a> -->
@@ -830,12 +825,26 @@ De Restaurateur zal er nochtans, mocht dit zich voordoen, van worden verwittigd 
 						<button class="croped" ng-click="SendEmail()" lng="Send"></button>
 					</div>
 				</div>
+				<div class="clearfix margin-top">
+					<button class="croped left" ng-click="go_to(7)" lng="Page précédente"></button>
+					<button class="croped right" ng-click="save()" lng="Sauvegarder"></button>
+				</div>
+				<div class="clearfix margin-top" ng-if="c_id">
+					<label class="left" style="margin-right: 20px;">Prévisualisation du contrat en PDF </label>
+					<!-- <div > -->
+						<button class="croped left" style="margin-right: 20px;" ng-click="showPdf()" lng="FR"></button>
+						<button class="croped left" ng-click="showPdf(1)" lng="NL"></button>
+					<!-- </div> -->
+				</div>
+				<div ng-if="pdfs" class="conditions">
+					<div ng-include="'layout/pdf.html'" ></div>
+				</div>
+				<div ng-if="pdfsn" class="conditions">
+					<div ng-include="'layout/pdf.html'" ></div>
+				</div>
 
 			</div>
-			<div class="clearfix margin-top">
-				<button class="croped left" ng-click="go_to(7)" lng="Page précédente"></button>
-				<button class="croped right" ng-click="save()" lng="Sauvegarder"></button>
-			</div>
+
 		</div>
 	</div>
 </div>
