@@ -58,6 +58,23 @@
 				<p class="header_p">Personne de contact</p>
 				<div>
 					<div><label for="input_7">Nom:</label><input type="text" id="input_7" ng-model="cStuff.contactName"/></div>
+					<div><label for="input_20">Titre:</label><div class="btn-group btn-sel" dropdown is-open="status.isopen">
+					      <button type="button" class="btn btn-primary dropdown-toggle btndrop" dropdown-toggle ng-disabled="disabled">
+					        {{cStuff.title}} <span class="caret"></span>
+					      </button>
+					      <ul class="dropdown-menu dropdown-menub dropdown-menu-select" role="menu">
+					        <li ><a href="" ng-click="cStuff.title = 'Mr.'">Mr.</a></li>
+					        <li ><a href="" ng-click="cStuff.title = 'Mrs.'">Mrs.</a></li>
+					        <li ><a href="" ng-click="cStuff.title = 'Mme'">Mme</a></li>
+					        <li ><a href="" ng-click="cStuff.title = 'female'">female</a></li>
+					        <li ><a href="" ng-click="cStuff.title = 'male'">male</a></li>
+					        <li ><a href="" ng-click="cStuff.title = 'Mevrouw'">Mevrouw</a></li>
+					        <li ><a href="" ng-click="cStuff.title = 'De heer'">De heer</a></li>
+					        <li ><a href="" ng-click="cStuff.title = 'Madame'">Madame</a></li>
+					        <li ><a href="" ng-click="cStuff.title = 'Monsieur'">Monsieur</a></li>
+					      </ul>
+					    </div>
+						<!-- <input type="text" id="input_20" ng-model="cStuff.title"/> --></div>
 					<div><label for="input_8">Fonction:</label><input type="text" id="input_8" ng-model="cStuff.function"/></div>
 					<div><label for="input_9">Mail:</label><input type="text" id="input_9" ng-model="cStuff.email"/></div>
 					<div><label for="input_10">GSM:</label><input type="text" id="input_10" ng-model="cStuff.phone"/></div>

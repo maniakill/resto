@@ -443,3 +443,7 @@ button.close { -webkit-appearance: none; padding: 0; cursor: pointer; background
 }
 .indented{ padding-left: 40px;  }
 .saveToLine{ display: inline-block; background: url('../images/copy.png') no-repeat 6px 6px; width: 42px; height: 42px; }
+.btn-sel { margin-top: 20px; }
+.open.btn-sel .dropdown-toggle.btn-primary, .btn-sel .btn-primary,.btn-sel .btn-primary:hover,.btn-sel .btn-primary:active,.btn-sel .btn-primary:focus { background: #fff; width: 333px; color: #4d4d4d; font-size: 18px; border-color: #9dabb3; text-align: left; }
+.btn-sel .btn-primary .caret { color: #428bca}
+.dropdown-menu-select { width: 331px; }

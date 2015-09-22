@@ -116,15 +116,15 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
   var getparams = {'do' : 'restopass-order',c_id:$scope.c_id};
   $scope.step=1;
   $scope.cStuff = { comp_start : false, c_start : false,
-    orar : { luni: { from: '', to: '',from2: '', to2: ''},
-           marti: { from: '', to: '',from2: '', to2: ''},
-           miercuri: { from: '', to: '',from2: '', to2: ''},
-           joi: { from: '', to: '',from2: '', to2: ''},
-           vineri: { from: '', to: '',from2: '', to2: ''},
-           sambata: { from: '', to: '',from2: '', to2: ''},
-           duminica: { from: '', to: '',from2: '', to2: ''}
-         }
-   };
+    orar :  { luni: { from: '', to: '',from2: '', to2: ''},
+              marti: { from: '', to: '',from2: '', to2: ''},
+              miercuri: { from: '', to: '',from2: '', to2: ''},
+              joi: { from: '', to: '',from2: '', to2: ''},
+              vineri: { from: '', to: '',from2: '', to2: ''},
+              sambata: { from: '', to: '',from2: '', to2: ''},
+              duminica: { from: '', to: '',from2: '', to2: ''}
+            }
+  };
   $scope.client = {};
   $scope.myVar = {};
   $scope.image = [];
