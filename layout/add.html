@@ -48,6 +48,17 @@
 			<div ng-if="client.types==1">
 				<p class="header_p">Coordonnées du restaurant</p>
 				<div>
+					<div class="form-group clearfix"><label for="input_15" class="left">Numéro d’entreprise:</label>
+						<div class="ptgroupaddon">
+							<div class="input-group">
+								<input type="text" id="input_15" ng-change="checkVat()"  ng-model="cStuff.dnumero"/><span class="input-group-addon" ng-if="vmMod.isOk || vmMod.isFalse" >
+				                  	<i class="glyphicon glyphicon-ok text-success" ng-if="vmMod.isOk"></i>
+				                  	<i class="glyphicon glyphicon-ban-circle text-danger" ng-if="vmMod.isFalse"></i>
+				                  	<i class="glyphicon top_trends_icon" ng-if="vmMod.isTrends"><img src="images/trends_vat1.png" alt="" /></i>
+				                </span>
+			                </div>
+		                </div>
+                	</div>
 					<div><label for="input_3">Nom:</label><input type="text" id="input_3" ng-model="cStuff.customer_name" ng-class="myVar.cname"/></div>
 					<div><label for="input_4">Adresse:</label><input type="text" id="input_4" ng-model="cStuff.address"/></div>
 					<div><label for="input_16">Code postal:</label><input type="text" id="input_16" ng-model="cStuff.zip"/></div>
@@ -87,8 +98,7 @@
 					<div><label for="input_18">Code postal:</label><input type="text" id="input_18" ng-model="cStuff.dzip"/></div>
 					<div><label for="input_19">Ville:</label><input type="text" id="input_19" ng-model="cStuff.dcity"/></div>
 					<div><label for="input_13">Tel:</label><input type="text" id="input_13" ng-model="cStuff.dtell"/></div>
-					<div><label for="input_14">Mail:</label><input type="text" id="input_14" ng-model="cStuff.dmail"/></div>
-					<div><label for="input_15">Numéro d’entreprise:</label><input type="text" id="input_15" ng-model="cStuff.dnumero"/></div>
+					<div><label for="input_14">Mail:</label><input type="text" id="input_14" ng-model="cStuff.dmail"/></div>					
 				</div>
 			</div>
 			<div class="clearfix margin-top">
@@ -677,6 +687,9 @@ Jours de fermeture
 			<div class="clearfix margin-top">
 				<button ng-click="sendDb()">Upload images to dropbox</button>
 			</div>
+			<div><label for="input_3">Nom de caisse:</label><input type="text" id="input_3" ng-model="cStuff.extra[21]" /></div>
+			<div><label for="input_3">Wifi:</label><input type="text" id="input_3" ng-model="cStuff.extra[17]" /></div>
+			<div><label for="input_3">Mot de passe Wifi:</label><input type="text" id="input_3" ng-model="cStuff.extra[18]" /></div>
 			<!-- <a href="" ng-click="sendDb2()">Send to file</a> -->
 			<div class="clearfix margin-top">
 				<button class="croped left" ng-click="go_to(6)" lng="Page précédente"></button>

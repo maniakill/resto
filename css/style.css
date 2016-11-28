@@ -447,3 +447,21 @@ button.close { -webkit-appearance: none; padding: 0; cursor: pointer; background
 .open.btn-sel .dropdown-toggle.btn-primary, .btn-sel .btn-primary,.btn-sel .btn-primary:hover,.btn-sel .btn-primary:active,.btn-sel .btn-primary:focus { background: #fff; width: 333px; color: #4d4d4d; font-size: 18px; border-color: #9dabb3; text-align: left; }
 .btn-sel .btn-primary .caret { color: #428bca}
 .dropdown-menu-select { width: 331px; }
+.ptgroupaddon{
+	float: left;
+	width: 20%;
+}
+.form-group{
+	margin-bottom: 0px;
+}
+.form-group label{
+	margin-top: 31px;
+}
+.ptgroupaddon{
+	margin-top: 20px;
+}
+.ptgroupaddon input{
+	margin-top: 0px;
+	border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}

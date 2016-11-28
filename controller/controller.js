@@ -94,6 +94,12 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
       project.stopLoading();
     },function(){project.stopLoading();});
   }
+  $scope.page = function(pag){
+    if(pag == undefined){ return false; }
+    // vibrate.vib(100);
+    getparams.offset = pag;
+    $scope.doIt('get',getparams);
+  }
   $scope.open = function($event,type) {
     $event.stopPropagation();
     $scope.openeds = true;
@@ -113,7 +119,7 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
   $scope.logout = function(){ var code ={}; code.logout = true; project.logout(code); }
 }]).controller('add', ['$scope','$http','$timeout','project','$modal','$rootScope','camera','$location','$routeParams','notification', function ($scope,$http,$timeout,project,$modal,$rootScope,camera,$location,$routeParams,notification){
   $scope.c_id = isNaN($routeParams.id) === false ? $routeParams.id : 0;
-  var getparams = {'do' : 'restopass-order',c_id:$scope.c_id};
+  var getparams = {'do' : 'restopass-order',c_id:$scope.c_id}, typePromise;
   $scope.step=1;
   $scope.cStuff = { comp_start : false, c_start : false,
     orar :  { luni: { from: '', to: '',from2: '', to2: ''},
@@ -136,6 +142,7 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
   $scope.pick_date_format = 'dd/MM/yyyy';
   $scope.hours=[];
   $scope.sendEmail.lng = 0;
+  $scope.vmMod = {};
 
   for (var i = 7; i < 24; i++) {
     var text = i;
@@ -467,10 +474,72 @@ app.controller('login',['$scope','$http','$templateCache','$location','$timeout'
         return $scope.sendDb2(i+1);
       });
   }
+  $scope.vmMod.reset = function(){
+    $scope.vmMod.checking = false;
+    $scope.vmMod.isOk = false;
+    $scope.vmMod.isFalse = false;
+    $scope.vmMod.isTrends = false;
+  }
+
+  $scope.checkVat = function(){
+    $scope.vmMod.reset();
+    $scope.vmMod.checking = true;
+    if(!$scope.cStuff.dnumero){
+        if(typePromise){ $timeout.cancel(typePromise); }
+        $scope.vmMod.checking = false;
+        return;
+    }
+    if(typePromise){ $timeout.cancel(typePromise); }
+    typePromise = $timeout(function(){
+        if($scope.cStuff.dnumero){
+            // $scope.vmMod.checking = false;
+            // $scope.vmMod.isOk = true;         
+            var data = { 'do': 'restopass--restopass-check_vies_vat_number', value: $scope.cStuff.dnumero };
+            // helper.doRequest('post','index.php',data,$scope.vmMod.renderPage);
+            var p = $.param(data);
+            project.doGet('post',p).then(function(r) {
+              $scope.renderPage(r);
+              project.stopLoading();
+            },
+            function(data){
+              $scope.alerts=[{type:'danger',msg:'Server error. Please try later'}];
+            });
+        }else{
+            $scope.vmMod.reset();
+        }
+    },300);
+  }
+
+  $scope.renderPage =function (d){
+      $scope.vmMod.reset();
+      if(d.data.response =='Error' && $scope.cStuff.dnumero){
+          $scope.vmMod.isFalse = true;
+      }
+      if(d.data.response != 'Error' && $scope.cStuff.dnumero){
+          if(d.data.trends_ok){
+              $scope.vmMod.isTrends = true;
+          }else{
+              $scope.vmMod.isOk = true;                    
+          }
+      }
+      $scope.vmMod.parseData(d);
+  }
+
+  $scope.vmMod.parseData =function (d){
+      $scope.cStuff.customer_name=d.data.response.comp_name;
+      $scope.cStuff.address=d.data.response.comp_address;
+      $scope.cStuff.city=d.data.response.comp_city;
+      $scope.cStuff.zip=d.data.response.comp_zip;
+      // vmMod.obj.country_id=d.data.comp_country ? d.data.comp_country : 26;
+  }
 
   if($scope.c_id != 0 ){
     $timeout( function(){ $scope.doIt('get',getparams,function(r){
+      console.log(r);
         $scope.cStuff = r.data.customer;
+        if(!$scope.cStuff.extra){
+          $scope.cStuff.extra=[];
+        }
         $scope.photos.types = r.data.photoType ? r.data.photoType : 0;
         $scope.image = r.data.img ? r.data.img : [];
         $scope.signature = r.data.signature;
